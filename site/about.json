@@ -1,0 +1,16 @@
+{
+ "name": "Aero",
+ "apk": "aero.apk",
+ "tag": "name",
+ "web": true,
+ "webroot": "assets",
+ "intro": [
+  "항공권을 찍으면 출발·도착·환승 정보를 정리해 줘요.",
+  "공항에 늦지 않게 언제 출발하면 되는지 알려 줘요.",
+  "현지 시간, 시차, 콘센트·전압 정보도 볼 수 있어요."
+ ],
+ "redirects": [
+  "guide.html",
+  "app.html"
+ ]
+}

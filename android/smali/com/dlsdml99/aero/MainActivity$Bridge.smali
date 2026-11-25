@@ -462,7 +462,7 @@
     :cond_0
     iget-object p1, p0, Lcom/dlsdml99/aero/MainActivity$Bridge;->this$0:Lcom/dlsdml99/aero/MainActivity;
 
-    const-string p2, "https://dlsdml99-create.github.io/ieum/"
+    const-string p2, "https://mini-2026.github.io/ieum/"
 
     invoke-static {p2}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 

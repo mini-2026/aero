@@ -19,7 +19,7 @@
 
 .field private static final HOME:Ljava/lang/String; = "https://appassets.androidplatform.net/assets/index.html"
 
-.field private static final RELEASE_API:Ljava/lang/String; = "https://api.github.com/repos/dlsdml99-create/aero/releases/latest"
+.field private static final RELEASE_API:Ljava/lang/String; = "https://api.github.com/repos/mini-2026/aero/releases/latest"
 
 .field private static final REQ_BK_OPEN:I = 0x1c86
 
@@ -128,7 +128,7 @@
 
     const-string v0, "github.com"
 
-    const-string v1, "/dlsdml99-create/aero/"
+    const-string v1, "/mini-2026/aero/"
 
     filled-new-array {v0, v1}, [Ljava/lang/String;
 
@@ -136,7 +136,7 @@
 
     const-string v0, "/ieum/"
 
-    const-string v1, "dlsdml99-create.github.io"
+    const-string v1, "mini-2026.github.io"
 
     filled-new-array {v1, v0}, [Ljava/lang/String;
 
@@ -1005,7 +1005,7 @@
     :try_start_0
     new-instance v2, Ljava/net/URL;
 
-    const-string v3, "https://api.github.com/repos/dlsdml99-create/aero/releases/latest"
+    const-string v3, "https://api.github.com/repos/mini-2026/aero/releases/latest"
 
     invoke-direct {v2, v3}, Ljava/net/URL;-><init>(Ljava/lang/String;)V
 
@@ -1104,7 +1104,7 @@
 
     if-eqz v5, :cond_2
 
-    const-string v5, "https://github.com/dlsdml99-create/aero/releases/download/"
+    const-string v5, "https://github.com/mini-2026/aero/releases/download/"
 
     invoke-virtual {v7, v5}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
