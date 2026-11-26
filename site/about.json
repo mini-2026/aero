@@ -6,11 +6,34 @@
  "webroot": "assets",
  "intro": [
   "항공권을 찍으면 출발·도착·환승 정보를 정리해 줘요.",
-  "공항에 늦지 않게 언제 출발하면 되는지 알려 줘요.",
-  "현지 시간, 시차, 콘센트·전압 정보도 볼 수 있어요."
+  "공항에 늦지 않게 언제 출발하면 되는지 알려 드리고, 출발 전에 세 번 알림을 보내요. 홈 화면 위젯도 있어요.",
+  "현지 시간, 시차, 날씨, 콘센트·전압 정보를 볼 수 있어요.",
+  "입국·귀국 준비 목록, 내 짐, 면세 한도 계산기, 공항 메모가 있어요.",
+  "택시 기사에게 보여 줄 주소 카드, 가족에게 도착 시각 보내기도 돼요."
  ],
  "redirects": [
   "guide.html",
   "app.html"
+ ],
+ "lib": [
+  {
+   "as": "html5-qrcode.min.js",
+   "url": "https://raw.githubusercontent.com/mebjas/html5-qrcode/bd41bf14f401bb6d18fef5dc5c2de3e5e060fcc7/minified/html5-qrcode.min.js",
+   "sha256": "660b12437b1d747e3e68b8be0685c08cb728140110ad213f167b14b66f8b1d8e"
+  },
+  {
+   "as": "pdf.min.mjs",
+   "url": "https://registry.npmjs.org/pdfjs-dist/-/pdfjs-dist-6.2.108.tgz",
+   "sha512": "sha512-YxFb+SQcodN2rnX9Tn3dHYlqfb7NjlzzfONPpJd+AKoKtUjEdevTfbC07d5TcczzOK6261auRkP/M8OBHs9vFQ==",
+   "member": "package/build/pdf.min.mjs",
+   "sha256": "e0be3863c23c8af2305b16548febd58e7f8874a460253317d7771cddbc1c0f6d"
+  },
+  {
+   "as": "pdf.worker.min.mjs",
+   "url": "https://registry.npmjs.org/pdfjs-dist/-/pdfjs-dist-6.2.108.tgz",
+   "sha512": "sha512-YxFb+SQcodN2rnX9Tn3dHYlqfb7NjlzzfONPpJd+AKoKtUjEdevTfbC07d5TcczzOK6261auRkP/M8OBHs9vFQ==",
+   "member": "package/build/pdf.worker.min.mjs",
+   "sha256": "0613f41490dd6aaceed7a93fbbd38c85e6d6aa60474b6588c6e7709cfbe18cb3"
+  }
  ]
 }
