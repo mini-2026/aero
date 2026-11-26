@@ -109,7 +109,7 @@ upd = ''.join(
     f'<div class="n"><b>v{e(str(n.get("v","")))}</b> <span>{e(str(n.get("d","")))}</span><ul>'
     + ''.join(f'<li>{e(str(i))}</li>' for i in (n.get('items') or [])) + '</ul></div>'
     for n in notes) or '<p>업데이트 내용은 앱 안 왼쪽 아래 버전을 눌러 볼 수 있어요.</p>'
-web = (f'<a class="b2" href="app/">📱 아이폰·웹에서 열기</a>' if about.get('web') else '')
+web = (f'<a class="b2" href="app/">🌐 웹페이지</a>' if about.get('web') else '')
 privacy = about.get('privacy') or app_privacy() or '입력한 내용은 내 휴대폰에만 저장돼요.'
 
 page = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8">
