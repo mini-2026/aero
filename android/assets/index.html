@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'self' https://api.github.com https://api.open-meteo.com https://open.er-api.com data: blob:; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<style>:root{color-scheme:light}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}.leave-ask{position:sticky;bottom:0;z-index:20;margin:12px 0 0;padding:14px;border-radius:14px;background:#1F2430;color:#fff;box-shadow:0 6px 24px rgba(0,0,0,.28)}.leave-ask p{margin:0 0 10px;font-size:15px;font-weight:600;line-height:1.4;color:#fff}.leave-row{display:flex;gap:8px}.leave-row button{flex:1;min-height:44px;border:0;border-radius:10px;font:inherit;font-size:15px;font-weight:600;cursor:pointer;background:rgba(255,255,255,.14);color:#fff}.leave-row .la-save{background:#FFD24A;color:#1F2430}.leave-ask .la-never{display:block;width:100%;margin-top:8px;min-height:40px;border:0;background:none;color:rgba(255,255,255,.85);font:inherit;font-size:14px;text-decoration:underline;cursor:pointer}.leave-note{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 12px);transform:translateX(-50%);z-index:9999;display:flex;align-items:center;gap:12px;max-width:92vw;padding:10px 14px;border-radius:12px;background:#1F2430;color:#fff;font-size:14px;box-shadow:0 6px 24px rgba(0,0,0,.28)}.leave-note button{min-height:36px;padding:0 10px;border:0;border-radius:8px;background:rgba(255,255,255,.16);color:#fff;font:inherit;font-weight:700;cursor:pointer}</style>
+<style>:root{color-scheme:light}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}.leave-ask{position:sticky;bottom:0;z-index:20;margin:12px 0 0;padding:14px;border-radius:14px;background:#1F2430;color:#fff;box-shadow:0 6px 24px rgba(0,0,0,.28)}.leave-ask p{margin:0 0 10px;font-size:15px;font-weight:600;line-height:1.4;color:#fff}.leave-row{display:flex;gap:8px}.leave-row button{flex:1;min-height:48px;border:0;border-radius:10px;font:inherit;font-size:15px;font-weight:600;cursor:pointer;background:rgba(255,255,255,.14);color:#fff}.leave-row .la-save{background:#FFD24A;color:#1F2430}.leave-ask .la-never{display:block;width:100%;margin-top:8px;min-height:48px;border:0;background:none;color:rgba(255,255,255,.85);font:inherit;font-size:14px;text-decoration:underline;cursor:pointer}.leave-note{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 12px);transform:translateX(-50%);z-index:9999;display:flex;align-items:center;gap:12px;max-width:92vw;padding:10px 14px;border-radius:12px;background:#1F2430;color:#fff;font-size:14px;box-shadow:0 6px 24px rgba(0,0,0,.28)}.leave-note button{min-height:48px;padding:0 10px;border:0;border-radius:8px;background:rgba(255,255,255,.16);color:#fff;font:inherit;font-weight:700;cursor:pointer}</style>
 <title>Aero</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
@@ -11,7 +11,7 @@
   --ground:#E7EBF0; --paper:#FFFFFF; --paper-2:#F3F5F8; --ink:#132033; --ink-2:#4A596C; --ink-3:#5B6778; --rule:#D0D8E1;
   --amber:#F2AE00; --amber-ink:#7E5300; --amber-soft:#FFF1C9;
   --route:#2459C2; --route-soft:#E2EAFA;
-  --ok:#17804F; --ok-soft:#DFF2E7; --warn:#9E5E00; --warn-soft:#FCEDD2; --bad:#B9312A; --bad-soft:#FAE1DE;
+  --ok:#136B42; --ok-soft:#DFF2E7; --warn:#9E5E00; --warn-soft:#FCEDD2; --bad:#B9312A; --bad-soft:#FAE1DE;
   --board:#16202B; --board-2:#0E161F; --board-ink:#FFC62E; --board-text:#E9EEF4; --board-dim:#8E9BAA; --board-rule:#2A3644;
   --shadow:0 1px 2px rgb(19 32 51 / .06), 0 8px 22px rgb(19 32 51 / .07);
   --on-amber:#1A1405; --scrim:rgb(8 13 19 / .55);
@@ -57,18 +57,18 @@ header.top .in{display:flex;align-items:center;justify-content:space-between;gap
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
 .brand svg{flex:none}
 .brand h1{margin:0;font-size:19px;font-weight:800;letter-spacing:-.02em;white-space:nowrap}
-.trips-btn{min-height:44px;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--rule);background:var(--paper);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600;color:var(--ink-2);white-space:nowrap}
+.trips-btn{min-height:48px;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--rule);background:var(--paper);border-radius:999px;padding:7px 12px;font-size:14px;font-weight:600;color:var(--ink-2);white-space:nowrap}
 .trips-btn b{font-family:var(--f-mono);color:var(--ink)}
 
 main.wrap{display:flex;flex-direction:column;gap:14px;padding-block:4px calc(112px + env(safe-area-inset-bottom,0px))}
 
-.note-bar{display:flex;align-items:center;gap:10px;justify-content:space-between;background:var(--amber-soft);color:var(--amber-ink);border-radius:12px;padding:10px 12px;font-size:13px;font-weight:600}
+.note-bar{display:flex;align-items:center;gap:10px;justify-content:space-between;background:var(--amber-soft);color:var(--amber-ink);border-radius:12px;padding:10px 12px;font-size:14px;font-weight:600}
 .note-bar span{min-width:0}
 
 /* departure board hero */
 .board{background:var(--board);color:var(--board-text);border-radius:20px;padding:18px 16px 16px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow)}
 .board-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--board-dim)}
+.eyebrow{font-size:14px;font-weight:700;letter-spacing:.08em;color:var(--board-dim)}
 .board-date{font-size:14px;font-weight:600;color:var(--board-text)}
 .flaps{perspective:420px;display:flex;align-items:center;gap:6px;font-family:var(--f-display);font-weight:600;font-size:clamp(64px,22vw,96px);line-height:1}
 .flap{position:relative;display:inline-grid;place-items:center;width:.74em;height:1.08em;background:var(--board-2);color:var(--board-ink);border-radius:8px;box-shadow:inset 0 -2px 0 rgb(0 0 0 / .35)}
@@ -80,34 +80,34 @@ main.wrap{display:flex;flex-direction:column;gap:14px;padding-block:4px calc(112
 .board-sub .cd{color:var(--board-ink);font-weight:700}
 .board-rows{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .board-row{display:flex;flex-direction:column;gap:2px;align-items:flex-start;text-align:left;background:var(--board-2);border:1px solid var(--board-rule);border-radius:12px;padding:10px 12px;color:var(--board-text);min-width:0}
-.board-row .k{font-size:12px;color:var(--board-dim);font-weight:600}
+.board-row .k{font-size:14px;color:var(--board-dim);font-weight:600}
 .board-row .v{font-family:var(--f-display);font-size:24px;font-weight:600;line-height:1.1;letter-spacing:.01em}
-.board-row .h{font-size:12px;color:var(--board-dim)}
+.board-row .h{font-size:14px;color:var(--board-dim)}
 .board-row[aria-expanded="true"]{border-color:var(--board-ink)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{min-height:44px;border:1px solid var(--board-rule);background:transparent;color:var(--board-text);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600}
+.chip{min-height:48px;border:1px solid var(--board-rule);background:transparent;color:var(--board-text);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:600}
 .chip[aria-pressed="true"]{background:var(--board-ink);border-color:var(--board-ink);color:var(--board-2)}
-.chip-hint{font-size:12px;color:var(--board-dim);width:100%}
+.chip-hint{font-size:14px;color:var(--board-dim);width:100%}
 .board-actions{display:flex;gap:8px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:12px 14px;font-weight:700;font-size:15px;text-decoration:none;border:0;min-height:46px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:12px 14px;font-weight:700;font-size:15px;text-decoration:none;border:0;min-height:48px}
 .btn-amber{background:var(--board-ink);color:var(--on-amber);flex:1 1 auto}
 .btn-board{background:transparent;color:var(--board-text);border:1px solid var(--board-rule);flex:0 0 auto}
-.tz-note{font-size:12px;color:var(--board-dim);margin:0}
+.tz-note{font-size:14px;color:var(--board-dim);margin:0}
 .need-time{display:flex;flex-direction:column;gap:10px}
 .need-time p{margin:0;color:var(--board-text)}
 .need-time .row{display:flex;gap:8px;flex-wrap:wrap}
-.need-time input{background:var(--board-2);border:1px solid var(--board-rule);color:var(--board-text);border-radius:10px;padding:10px 12px;min-height:46px;font-family:var(--f-mono)}
+.need-time input{background:var(--board-2);border:1px solid var(--board-rule);color:var(--board-text);border-radius:10px;padding:10px 12px;min-height:48px;font-family:var(--f-mono)}
 
 /* cards */
 .card{background:var(--paper);border-radius:18px;padding:16px;box-shadow:var(--shadow)}
-.card h2,.sec-title{margin:0 0 10px;font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--ink-3)}
+.card h2,.sec-title{margin:0 0 10px;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--ink-3)}
 .sec-title{margin:6px 2px -4px}
 
 /* timeline */
 .tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
-.tl li{display:grid;grid-template-columns:minmax(62px,auto) 18px 1fr;gap:0 8px;align-items:start;min-height:46px}
+.tl li{display:grid;grid-template-columns:minmax(62px,auto) 18px 1fr;gap:0 8px;align-items:start;min-height:48px}
 .tl time{font-family:var(--f-display);font-size:22px;font-weight:600;line-height:1.15;color:var(--ink)}
-.tl time small{display:block;font-family:var(--f-body);font-size:11px;font-weight:600;color:var(--ink-3);letter-spacing:0}
+.tl time small{display:block;font-family:var(--f-body);font-size:14px;font-weight:600;color:var(--ink-3);letter-spacing:0}
 .tl .dot{position:relative;height:100%;display:flex;justify-content:center}
 .tl .dot::before{content:"";width:10px;height:10px;border-radius:50%;border:2px solid var(--ink-3);background:var(--paper);margin-top:7px;z-index:1}
 .tl .dot::after{content:"";position:absolute;top:19px;bottom:-7px;width:2px;background:var(--rule)}
@@ -116,42 +116,42 @@ main.wrap{display:flex;flex-direction:column;gap:14px;padding-block:4px calc(112
 .tl li.dep .dot::before{background:var(--ink);border-color:var(--ink)}
 .tl .what{padding-bottom:10px;min-width:0}
 .tl .what b{display:block;font-size:15px}
-.tl .what span{display:block;font-size:13px;color:var(--ink-2)}
+.tl .what span{display:block;font-size:14px;color:var(--ink-2)}
 
 /* boarding pass */
 .pass{background:var(--paper);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
 .pass-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px 0}
 .al{display:flex;align-items:center;gap:8px;min-width:0}
-.al-code{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:8px;background:var(--route-soft);color:var(--route);font-family:var(--f-mono);font-weight:600;font-size:12px}
+.al-code{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:8px;background:var(--route-soft);color:var(--route);font-family:var(--f-mono);font-weight:600;font-size:14px}
 .al-name{font-weight:700;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .fno{font-family:var(--f-mono);font-weight:600;font-size:14px;color:var(--ink-2);white-space:nowrap}
 .pass-route{display:grid;grid-template-columns:1fr minmax(64px,auto) 1fr;gap:8px;align-items:start;padding:10px 16px 16px}
 .end{min-width:0}
 .end.r{text-align:right}
-.code{font-family:var(--f-display);font-weight:700;font-size:46px;line-height:1;letter-spacing:.01em}
+.code{font-family:var(--f-display);font-weight:700;font-size:46px;line-height:1;letter-spacing:.01em;white-space:nowrap}
 .end .t{font-family:var(--f-display);font-size:22px;font-weight:600;line-height:1.2}
-.end .t.missing{font-family:var(--f-body);font-size:13px;font-weight:600;color:var(--warn)}
-.end .t.est{font-family:var(--f-body);font-size:13px;font-weight:600;color:var(--ink-3)}
-.end .nm{font-size:13px;font-weight:700;color:var(--ink);overflow-wrap:anywhere}
-.end .dt{font-size:12px;color:var(--ink-3)}
+.end .t.missing{font-family:var(--f-body);font-size:14px;font-weight:600;color:var(--warn)}
+.end .t.est{font-family:var(--f-body);font-size:14px;font-weight:600;color:var(--ink-3)}
+.end .nm{font-size:14px;font-weight:700;color:var(--ink);overflow-wrap:anywhere}
+.end .dt{font-size:14px;color:var(--ink-3)}
 .mid{display:flex;flex-direction:column;align-items:center;gap:4px;padding-top:12px;color:var(--ink-3)}
 .mid .line{position:relative;width:100%;min-width:64px;height:20px;display:grid;place-items:center}
 .mid .line::before{content:"";position:absolute;left:0;right:0;top:50%;border-top:2px dashed var(--rule)}
 .mid svg{position:relative;background:var(--paper);padding:0 3px;color:var(--ink-2)}
-.mid .dur{font-size:12px;font-weight:600;white-space:nowrap}
+.mid .dur{font-size:14px;font-weight:600;white-space:nowrap}
 .stub{position:relative;background:var(--paper-2);border-top:2px dashed var(--rule);padding:12px 16px 12px}
 .stub::before,.stub::after{content:"";position:absolute;top:-11px;width:20px;height:20px;border-radius:50%;background:var(--ground)}
 .stub::before{left:-10px}.stub::after{right:-10px}
 .fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0}
 .fields div{min-width:0}
-.fields dt{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--ink-3)}
+.fields dt{font-size:14px;font-weight:700;letter-spacing:.06em;color:var(--ink-3)}
 .fields dd{margin:0;font-family:var(--f-display);font-size:22px;font-weight:600;line-height:1.2;overflow-wrap:anywhere}
-.fields dd small{display:block;font-family:var(--f-body);font-size:11px;font-weight:600;color:var(--ink-3);line-height:1.3}
+.fields dd small{display:block;font-family:var(--f-body);font-size:14px;font-weight:600;color:var(--ink-3);line-height:1.3}
 .fields dd.none{color:var(--ink-3)}
-.stub-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;margin-top:10px;font-size:12px;color:var(--ink-3)}
+.stub-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;margin-top:10px;font-size:14px;color:var(--ink-3)}
 .stub-foot b{font-family:var(--f-mono);color:var(--ink-2);font-weight:600}
 .stub-foot .acts{display:flex;gap:12px;align-items:center}
-.txt-btn{display:inline-flex;align-items:center;min-height:44px;min-width:44px;background:none;border:0;padding:0 4px;color:var(--route);font-weight:700;font-size:13px;text-decoration:none}
+.txt-btn{display:inline-flex;align-items:center;min-height:48px;min-width:48px;background:none;border:0;padding:0 4px;color:var(--route);font-weight:700;font-size:14px;text-decoration:none}
 
 /* transfer */
 .xfer{display:grid;grid-template-columns:28px 1fr;gap:10px;margin:-4px 0}
@@ -160,28 +160,28 @@ main.wrap{display:flex;flex-direction:column;gap:14px;padding-block:4px calc(112
 .xfer-body{background:var(--paper);border-radius:14px;padding:12px 14px;border:1px solid var(--rule);min-width:0;display:flex;flex-direction:column;gap:8px}
 .xfer-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 .xfer-top b{font-size:15px}
-.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:800;white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:14px;font-weight:800;white-space:nowrap}
 .pill.ok{background:var(--ok-soft);color:var(--ok)}
 .pill.warn{background:var(--warn-soft);color:var(--warn)}
 .pill.bad{background:var(--bad-soft);color:var(--bad)}
 .pill.unknown{background:var(--paper-2);color:var(--ink-2)}
-.xfer ol{margin:0;padding-left:18px;font-size:13px;color:var(--ink-2);display:flex;flex-direction:column;gap:3px}
-.xfer p{margin:0;font-size:12px;color:var(--ink-3)}
-.alert{border-radius:10px;padding:8px 10px;font-size:13px;font-weight:600;background:var(--bad-soft);color:var(--bad)}
+.xfer ol{margin:0;padding-left:18px;font-size:14px;color:var(--ink-2);display:flex;flex-direction:column;gap:3px}
+.xfer p{margin:0;font-size:14px;color:var(--ink-3)}
+.alert{border-radius:10px;padding:8px 10px;font-size:14px;font-weight:600;background:var(--bad-soft);color:var(--bad)}
 .alert.miss{display:flex;flex-direction:column;gap:6px;font-weight:500;line-height:1.5;margin:6px 0;border:1px solid var(--bad)}
 .alert.miss b{font-weight:700}.alert.miss .sub{margin-top:4px}
 .alert.miss ol{margin:0;padding-left:18px;color:var(--bad)}
 .note-bar.bad{background:var(--bad-soft);color:var(--bad);border-color:var(--bad)}
 .trip-days{display:flex;flex-direction:column;gap:6px}
-.trip-days .stay{display:flex;align-items:center;gap:8px;padding:2px 14px;color:var(--ink-2);font-size:13px}
+.trip-days .stay{display:flex;align-items:center;gap:8px;padding:2px 14px;color:var(--ink-2);font-size:14px}
 .trip-days .stay::before{content:"";width:2px;height:18px;background:var(--rule);margin:0 8px 0 4px}
-.trip-sum{font-size:13px;color:var(--ink-2);margin:-4px 0 10px}
+.trip-sum{font-size:14px;color:var(--ink-2);margin:-4px 0 10px}
 
 /* other journeys */
 .jlist{display:flex;flex-direction:column;gap:8px}
 .jrow{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:12px 14px}
 .jrow .r{font-family:var(--f-display);font-weight:600;font-size:20px;white-space:nowrap}
-.jrow .m{font-size:13px;color:var(--ink-2);min-width:0}
+.jrow .m{font-size:14px;color:var(--ink-2);min-width:0}
 .jrow[aria-current="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
 
 .empty{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
@@ -190,7 +190,7 @@ main.wrap{display:flex;flex-direction:column;gap:14px;padding-block:4px calc(112
 .empty-title{margin:0;font-size:22px;line-height:1.3;color:var(--board-text)}
 .empty-sub{margin:0;color:var(--board-dim);font-size:14px}
 .note-bar .txt-btn{color:var(--amber-ink);flex:none}
-.foot-note{font-size:12px;color:var(--ink-3);padding:0 2px;margin:2px 0 0}
+.foot-note{font-size:14px;color:var(--ink-3);padding:0 2px;margin:2px 0 0}
 
 /* bottom bar */
 nav.bar{position:fixed;left:0;right:0;bottom:0;z-index:7;background:var(--paper);border-top:1px solid var(--rule);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -201,7 +201,7 @@ nav.bar .in{display:flex;align-items:center;gap:8px;padding-block:10px}
 nav.bar .btn{flex:1 1 auto;min-width:0;justify-content:center}
 @media (max-width:520px){nav.bar .btn[data-act=manual] svg,nav.bar .btn[data-act=pick-file] svg{display:none}nav.bar .btn{padding-inline:10px;gap:5px}}
 @media (max-width:340px){nav.bar .btn svg{display:none}nav.bar .btn{padding-inline:6px;white-space:normal;line-height:1.15}nav.bar .in{gap:5px}}
-.ver{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;margin-left:-6px;padding:0 6px;font-family:var(--f-mono);font-size:12px;font-weight:600;color:var(--ink-3);margin-right:auto;white-space:nowrap}
+.ver{display:inline-flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;margin-left:-6px;padding:0 6px;font-family:var(--f-mono);font-size:14px;font-weight:600;color:var(--ink-3);margin-right:auto;white-space:nowrap}
 .btn-primary{background:var(--ink);color:var(--paper)}
 .btn-secondary{background:var(--paper-2);color:var(--ink);border:1px solid var(--rule)}
 
@@ -210,16 +210,16 @@ nav.bar .btn{flex:1 1 auto;min-width:0;justify-content:center}
 .sheet{background:var(--paper);width:100%;max-width:600px;max-height:88vh;overflow:auto;border-radius:20px 20px 0 0;padding-top:18px;padding-bottom:calc(18px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:14px}
 .sheet-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .sheet-head h2{margin:0;font-size:18px}
-.x{flex:none;background:var(--paper-2);border:0;border-radius:999px;width:44px;height:44px;display:grid;place-items:center;color:var(--ink-2)}
+.x{flex:none;background:var(--paper-2);border:0;border-radius:999px;width:48px;height:48px;display:grid;place-items:center;color:var(--ink-2)}
 .steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 .steps li{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;font-size:14px;color:var(--ink-3)}
-.steps li .ic{width:22px;height:22px;border-radius:50%;border:2px solid var(--rule);display:grid;place-items:center;font-size:12px;font-weight:800}
+.steps li .ic{width:22px;height:22px;border-radius:50%;border:2px solid var(--rule);display:grid;place-items:center;font-size:14px;font-weight:800}
 .steps li.active{color:var(--ink)}
 .steps li.active .ic{border-color:var(--amber);border-top-color:transparent;animation:spin .9s linear infinite}
 .steps li.done{color:var(--ink)}
 .steps li.done .ic{background:var(--ok);border-color:var(--ok);color:var(--paper)}
 .steps li.skip .ic{border-style:dashed}
-.steps li small{display:block;color:var(--ink-3);font-size:12px}
+.steps li small{display:block;color:var(--ink-3);font-size:14px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .thumb{width:100%;max-height:180px;object-fit:contain;border-radius:12px;background:var(--paper-2)}
 .msg{margin:0;font-size:14px;color:var(--ink-2)}
@@ -227,62 +227,62 @@ nav.bar .btn{flex:1 1 auto;min-width:0;justify-content:center}
 .sheet-actions{display:flex;gap:8px;flex-wrap:wrap}
 .sheet-actions .btn{flex:1 1 140px}
 .form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.form label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:700;color:var(--ink-3);min-width:0}
+.form label{display:flex;flex-direction:column;gap:4px;font-size:14px;font-weight:700;color:var(--ink-3);min-width:0}
 .form label.full{grid-column:1/-1}
-.form input{border:1px solid var(--rule);background:var(--paper-2);border-radius:10px;padding:10px 12px;min-height:44px;font-size:15px;font-weight:600;color:var(--ink);width:100%;min-width:0}
+.form input{border:1px solid var(--rule);background:var(--paper-2);border-radius:10px;padding:10px 12px;min-height:48px;font-size:15px;font-weight:600;color:var(--ink);width:100%;min-width:0}
 .trip-row{display:flex;align-items:center;gap:8px}
 .trip-row .jrow{flex:1;min-width:0}
-.del{background:none;border:1px solid var(--rule);border-radius:12px;min-width:44px;height:44px;display:grid;place-items:center;color:var(--ink-3)}
-.del.confirm{background:var(--bad);border-color:var(--bad);color:var(--paper);padding:0 10px;font-size:13px;font-weight:700}
+.del{background:none;border:1px solid var(--rule);border-radius:12px;min-width:48px;height:48px;display:grid;place-items:center;color:var(--ink-3)}
+.del.confirm{background:var(--bad);border-color:var(--bad);color:var(--paper);padding:0 10px;font-size:14px;font-weight:700}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:12px;font-size:14px;font-weight:600;max-width:min(92vw,520px);box-shadow:var(--shadow)}
 #h5q{position:absolute;left:-10000px;top:0;width:640px;height:10px;overflow:hidden}
-@media (max-width:380px){ .fields{grid-template-columns:repeat(2,minmax(0,1fr))} .code{font-size:40px} }
+@media (max-width:380px){ .fields{grid-template-columns:repeat(2,minmax(0,1fr))} .code{font-size:clamp(28px,11vw,40px)} }
 @media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important} }
 
 /* v1.1 additions */
 :root{--scan-bg:#FFFFFF;--scan-ink:#000000;--scan-2:#EEF1F4;--scan-rule:#C9D1DA;--scan-strong:#1B2633;--scan-text:#3A4655;--scan-dim:#5D6A79}
 .top-acts{display:flex;align-items:center;gap:8px}
-.icon-btn{position:relative;display:grid;place-items:center;width:44px;height:44px;border-radius:999px;border:1px solid var(--rule);background:var(--paper);color:var(--ink-2)}
-.badge{position:absolute;top:-3px;right:-3px;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--amber);color:var(--on-amber);font-size:11px;font-weight:800;display:grid;place-items:center;font-family:var(--f-mono)}
-.board-alert{display:flex;gap:8px;align-items:flex-start;background:var(--board-2);border:1px solid var(--board-ink);color:var(--board-ink);border-radius:12px;padding:9px 11px;font-size:13px;font-weight:700}
+.icon-btn{position:relative;display:grid;place-items:center;width:48px;height:48px;border-radius:999px;border:1px solid var(--rule);background:var(--paper);color:var(--ink-2)}
+.badge{position:absolute;top:-3px;right:-3px;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--amber);color:var(--on-amber);font-size:12px;font-weight:800;display:grid;place-items:center;font-family:var(--f-mono)}
+.board-alert{display:flex;gap:8px;align-items:flex-start;background:var(--board-2);border:1px solid var(--board-ink);color:var(--board-ink);border-radius:12px;padding:9px 11px;font-size:14px;font-weight:700}
 .board-more{display:flex;flex-wrap:wrap;gap:6px}
-.mini{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--board-rule);background:transparent;color:var(--board-text);border-radius:999px;padding:8px 12px;font-size:13px;font-weight:700;min-height:44px}
+.mini{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--board-rule);background:transparent;color:var(--board-text);border-radius:999px;padding:8px 12px;font-size:14px;font-weight:700;min-height:48px}
 .mini b{color:var(--board-ink);font-family:var(--f-mono)}
 
 .rt{background:var(--paper);border-radius:18px;padding:14px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
 .rt-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .rt-head b{font-size:14px}
-.tag{display:inline-flex;align-items:center;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:800;background:var(--route-soft);color:var(--route);white-space:nowrap}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:2px 9px;font-size:14px;font-weight:800;background:var(--route-soft);color:var(--route);white-space:nowrap}
 .tag.ex{background:var(--amber-soft);color:var(--amber-ink)}
-.rt p{margin:0;font-size:13px;color:var(--ink-2)}
+.rt p{margin:0;font-size:14px;color:var(--ink-2)}
 .rt-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0}
 .rt-grid div{min-width:0}
-.rt-grid dt{font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--ink-3)}
+.rt-grid dt{font-size:14px;font-weight:700;letter-spacing:.04em;color:var(--ink-3)}
 .rt-grid dd{margin:0;font-family:var(--f-display);font-size:22px;font-weight:600;line-height:1.2;overflow-wrap:anywhere}
 .rt-grid dd.st{font-family:var(--f-body);font-size:15px;font-weight:800;color:var(--ok);line-height:1.9}
 
 .dest{display:flex;flex-direction:column;gap:12px}
 .dest-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .dest-top .where{display:flex;flex-direction:column;min-width:0}
-.dest-top .where small{font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--ink-3)}
+.dest-top .where small{font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--ink-3)}
 .dest-top .where b{font-size:20px;line-height:1.3;overflow-wrap:anywhere}
-.dest-top .where span{font-size:13px;color:var(--ink-2)}
+.dest-top .where span{font-size:14px;color:var(--ink-2)}
 .wx{flex:none;text-align:right;display:flex;flex-direction:column;align-items:flex-end}
 .wx .t{font-family:var(--f-display);font-size:26px;font-weight:600;line-height:1.1}
-.wx .d{font-size:12px;color:var(--ink-2)}
-.wx .note{font-size:11px;color:var(--ink-3);max-width:120px}
-.dest-sub{margin:0;font-size:13px;color:var(--ink-2)}
+.wx .d{font-size:14px;color:var(--ink-2)}
+.wx .note{font-size:14px;color:var(--ink-3);max-width:120px}
+.dest-sub{margin:0;font-size:14px;color:var(--ink-2)}
 .dest-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .row-btn{display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;border:1px solid var(--rule);background:var(--paper-2);border-radius:12px;padding:11px 12px;font-size:14px;font-weight:700;color:var(--ink);min-height:48px;min-width:0}
-.row-btn b{font-family:var(--f-mono);font-size:13px;color:var(--route);white-space:nowrap;flex:none}
+.row-btn b{font-family:var(--f-mono);font-size:14px;color:var(--route);white-space:nowrap;flex:none}
 .row-btn.full{grid-column:1/-1}
 .tzc{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0 8px}.tzc>div{border:1px solid var(--rule);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:2px;background:var(--paper-2)}
-.tzc small{font-size:12px;opacity:.7}.tzc b{font-size:34px;line-height:1.1;font-family:var(--f-mono)}.tzc span{font-size:12px;opacity:.75}
+.tzc small{font-size:14px;opacity:.7}.tzc b{font-size:34px;line-height:1.1;font-family:var(--f-mono)}.tzc span{font-size:14px;opacity:.75}
 .tips{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-direction:column;gap:8px}.tips li{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}.tips p{margin:0;font-size:14px;line-height:1.5}
 .notes li{grid-template-columns:24px 1fr 28px!important}.note-sub{margin:-4px 0 10px}
-.xnotes{display:flex;flex-direction:column;gap:4px;margin:6px 0;padding:8px 10px;border-radius:10px;background:var(--paper-2);font-size:13px}
+.xnotes{display:flex;flex-direction:column;gap:4px;margin:6px 0;padding:8px 10px;border-radius:10px;background:var(--paper-2);font-size:14px}
 
-.seats-line{margin-top:8px;font-size:12px;color:var(--ink-2)}
+.seats-line{margin-top:8px;font-size:14px;color:var(--ink-2)}
 .seats-line b{font-family:var(--f-mono);font-weight:600;color:var(--ink)}
 
 /* full-screen overlays */
@@ -297,11 +297,11 @@ nav.bar .btn{flex:1 1 auto;min-width:0;justify-content:center}
 .qr rect{fill:var(--scan-bg)} .qr path{fill:var(--scan-ink)}
 .pass-photo{max-width:100%;max-height:62vh;object-fit:contain;border-radius:8px}
 .ov-chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
-.ov-chip{min-height:44px;border:1px solid var(--scan-rule);background:var(--scan-bg);color:var(--scan-strong);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700}
+.ov-chip{min-height:48px;border:1px solid var(--scan-rule);background:var(--scan-bg);color:var(--scan-strong);border-radius:999px;padding:7px 12px;font-size:14px;font-weight:700}
 .ov-chip[aria-pressed="true"]{background:var(--scan-strong);border-color:var(--scan-strong);color:var(--scan-bg)}
 .ov-info{text-align:center;font-size:14px;color:var(--scan-text);margin:0}
 .ov-info b{font-family:var(--f-mono);color:var(--scan-ink)}
-.ov-note{text-align:center;font-size:12px;color:var(--scan-dim);margin:0}
+.ov-note{text-align:center;font-size:14px;color:var(--scan-dim);margin:0}
 .taxi-say{font-size:15px;font-weight:700;color:var(--ink-3);margin:0;text-align:center}
 .taxi-local{font-size:clamp(34px,11vw,64px);font-weight:800;line-height:1.2;text-align:center;overflow-wrap:anywhere}
 .taxi-term{font-family:var(--f-display);font-size:34px;font-weight:700;color:var(--route)}
@@ -313,56 +313,56 @@ nav.bar .btn{flex:1 1 auto;min-width:0;justify-content:center}
 .list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
 .alert-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;border:1px solid var(--rule);border-radius:12px;padding:10px 12px}
 .alert-row time{font-family:var(--f-display);font-size:20px;font-weight:600;line-height:1.1;text-align:center;min-width:56px}
-.alert-row time small{display:block;font-family:var(--f-body);font-size:11px;font-weight:700;color:var(--ink-3)}
+.alert-row time small{display:block;font-family:var(--f-body);font-size:14px;font-weight:700;color:var(--ink-3)}
 .alert-row .txt{min-width:0}
 .alert-row .txt b{display:block;font-size:14px}
-.alert-row .txt span{display:block;font-size:12px;color:var(--ink-2)}
+.alert-row .txt span{display:block;font-size:14px;color:var(--ink-2)}
 .alert-row.off{opacity:.5}
 .sw{appearance:none;-webkit-appearance:none;width:44px;height:26px;border-radius:999px;background:var(--rule);position:relative;cursor:pointer;flex:none;margin:0}
 .sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--paper);transition:transform .15s}
 .sw:checked{background:var(--ok)}
 .sw:checked::after{transform:translateX(18px)}
-.sub-h{margin:4px 0 0;font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--ink-3)}
+.sub-h{margin:4px 0 0;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--ink-3)}
 .widget-mock{align-self:flex-start;width:min(100%,300px);background:var(--board);color:var(--board-text);border-radius:22px;padding:14px 16px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
-.widget-mock small{font-size:11px;font-weight:700;color:var(--board-dim)}
+.widget-mock small{font-size:14px;font-weight:700;color:var(--board-dim)}
 .widget-mock .t{font-family:var(--f-display);font-size:40px;font-weight:600;color:var(--board-ink);line-height:1.05}
-.widget-mock span{font-size:13px}
+.widget-mock span{font-size:14px}
 .df-open{width:100%;margin:2px 0 4px}
 .df-sum{border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;font-size:14px}
-.df-sum.ok{background:var(--paper-2)}.df-sum.over{background:#FDECEA;color:#8A1C12}.df-sum span{font-size:13px}
+.df-sum.ok{background:var(--paper-2)}.df-sum.over{background:#FDECEA;color:#8A1C12}.df-sum span{font-size:14px}
 .df-list{list-style:none;margin:0;padding:0}.df-list li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--rule);font-size:14px}
 .df-list small{color:var(--ink-2)}
 .df-add{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.df-add input{flex:1 1 120px;min-width:0;border:1px solid var(--rule);background:var(--paper);border-radius:10px;padding:8px 10px;min-height:44px;color:var(--ink);font-size:16px}
-.seg{display:flex;gap:4px;flex:1 1 100%}.seg-b{flex:1;min-height:44px;border:1px solid var(--rule);background:var(--paper);border-radius:10px;color:var(--ink);font-weight:700}
+.df-add input{flex:1 1 120px;min-width:0;border:1px solid var(--rule);background:var(--paper);border-radius:10px;padding:8px 10px;min-height:48px;color:var(--ink);font-size:16px}
+.seg{display:flex;gap:4px;flex:1 1 100%}.seg-b{flex:1;min-height:48px;border:1px solid var(--rule);background:var(--paper);border-radius:10px;color:var(--ink);font-weight:700}
 .seg-b[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 .checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
 .checks li{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;padding:10px 0;border-bottom:1px solid var(--rule)}
 .checks li:last-child{border-bottom:0}
-.pk-h{margin:18px 0 4px;font-size:15px}.pk-h small{font-weight:400;font-size:12px;color:var(--ink-3,#888);margin-left:6px}
-.pk-chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.pk-c{min-height:44px;border:1px solid var(--rule);background:transparent;color:inherit;border-radius:999px;padding:7px 12px;font:inherit;font-size:13px}
-.pk-add{display:flex;gap:8px;margin-bottom:12px}.pk-add input{flex:1;min-width:0;height:42px;padding:0 12px;border-radius:12px;border:1px solid var(--rule);background:transparent;color:inherit;font:inherit}
-.checks li:has(.pk-x){grid-template-columns:24px 1fr 28px}.pk-x{grid-column:3;grid-row:1;width:44px;height:44px;margin:-8px;border:0;border-radius:50%;background:transparent;color:inherit;font-size:20px;opacity:.6}
+.pk-h{margin:18px 0 4px;font-size:15px}.pk-h small{font-weight:400;font-size:14px;color:var(--ink-3,#888);margin-left:6px}
+.pk-chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.pk-c{min-height:48px;border:1px solid var(--rule);background:transparent;color:inherit;border-radius:999px;padding:7px 12px;font:inherit;font-size:14px}
+.pk-add{display:flex;gap:8px;margin-bottom:12px}.pk-add input{flex:1;min-width:0;height:48px;padding:0 12px;border-radius:12px;border:1px solid var(--rule);background:transparent;color:inherit;font:inherit}
+.checks li:has(.pk-x){grid-template-columns:24px 1fr 28px}.pk-x{grid-column:3;grid-row:1;width:48px;height:48px;margin:-8px;border:0;border-radius:50%;background:transparent;color:inherit;font-size:20px;opacity:.6}
 .checks input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--ok)}
 .checks label{display:flex;flex-direction:column;gap:2px;font-size:14px;font-weight:700;min-width:0;cursor:pointer}
-.checks label span{font-size:12px;font-weight:600;color:var(--ink-2)}
-.checks a{font-size:12px;font-weight:700}
+.checks label span{font-size:14px;font-weight:600;color:var(--ink-2)}
+.checks a{font-size:14px;font-weight:700}
 .pp{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--paper-2);border-radius:12px;padding:10px 12px}
-.pp label{font-size:13px;font-weight:700;color:var(--ink-2)}
-.pp input{border:1px solid var(--rule);background:var(--paper);border-radius:10px;padding:8px 10px;min-height:40px;color:var(--ink)}
-.pp .st{font-size:13px;font-weight:700;width:100%}
+.pp label{font-size:14px;font-weight:700;color:var(--ink-2)}
+.pp input{border:1px solid var(--rule);background:var(--paper);border-radius:10px;padding:8px 10px;min-height:48px;color:var(--ink)}
+.pp .st{font-size:14px;font-weight:700;width:100%}
 .pp .st.ok{color:var(--ok)} .pp .st.bad{color:var(--bad)}
 .share-text{white-space:pre-wrap;word-break:break-word;background:var(--paper-2);border:1px solid var(--rule);border-radius:12px;padding:12px;font-size:14px;margin:0;font-family:var(--f-body);user-select:text}
-.trip-find{width:100%;min-height:44px;border:1px solid var(--rule);background:var(--paper-2);border-radius:12px;padding:10px 12px;font-size:16px;color:var(--ink)}
-.trip-sec{margin:6px 2px 0;font-size:13px;font-weight:800;color:var(--ink-3);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.trip-find{width:100%;min-height:48px;border:1px solid var(--rule);background:var(--paper-2);border-radius:12px;padding:10px 12px;font-size:16px;color:var(--ink)}
+.trip-sec{margin:6px 2px 0;font-size:14px;font-weight:800;color:var(--ink-3);display:flex;justify-content:space-between;align-items:center;gap:8px}
 .trip-row.past .jrow{opacity:.78}
-.jrow .m small{display:block;color:var(--ink-3);font-size:12px}
+.jrow .m small{display:block;color:var(--ink-3);font-size:14px}
 .toast{display:flex;align-items:center;gap:12px}.toast[hidden]{display:none}
 .toast.top{top:calc(env(safe-area-inset-top,0px) + 10px);bottom:auto}
-.toast button{flex:none;min-height:44px;background:none;border:0;color:var(--amber);font-weight:800;padding:0 4px}
-.form-note{margin:0;font-size:13px;color:var(--ok);font-weight:600}
+.toast button{flex:none;min-height:48px;background:none;border:0;color:var(--amber);font-weight:800;padding:0 4px}
+.form-note{margin:0;font-size:14px;color:var(--ok);font-weight:600}
 .msg.warn{color:var(--warn);font-weight:700}
-.set-row{display:flex;flex-direction:column;gap:6px}.set-row b{font-size:13px;color:var(--ink-2)}
+.set-row{display:flex;flex-direction:column;gap:6px}.set-row b{font-size:14px;color:var(--ink-2)}
 :root[data-fs="1"] body{zoom:1.12} :root[data-fs="2"] body{zoom:1.25}
 .drop-hint{position:fixed;inset:0;z-index:40;background:var(--scrim);display:grid;place-items:center;color:var(--board-text);font-size:20px;font-weight:800;pointer-events:none}
 </style>
@@ -408,10 +408,10 @@ nav.bar .btn{flex:1 1 auto;min-width:0;justify-content:center}
 const APP_VERSION = '1.26';
 const NATIVE = window.TicketNative || null;            // APK bridge: photo text, GPS, alerts, widget, share, brightness
 const HOME_TZ = 'Asia/Seoul';
-// 웹앱에서만 쓰는 부품: 바깥 CDN이 아니라 같은 사이트(lib/)에 둔 파일 (빌드 때 npm에서 받아 sha256 확인)
+// 웹앱에서만 쓰는 부품: 바깥 CDN이 아니라 같은 사이트(lib/)에 둔 파일 (빌드 때 tools/site.py가 받아 sha256 확인, site/about.json의 lib)
 const H5Q_URL = 'lib/html5-qrcode.min.js';
-const PDFJS_URL = 'lib/pdf.min.js';
-const PDFJS_WORKER = 'lib/pdf.worker.min.js';
+const PDFJS_URL = './lib/pdf.min.mjs';
+const PDFJS_WORKER = './lib/pdf.worker.min.mjs';
 const STORE_KEY = 'chalkak.v1';
 
 const TZS=["Africa/Abidjan","Africa/Accra","Africa/Addis_Ababa","Africa/Algiers","Africa/Asmara","Africa/Bamako","Africa/Bangui","Africa/Banjul","Africa/Bissau","Africa/Blantyre","Africa/Brazzaville","Africa/Bujumbura","Africa/Cairo","Africa/Casablanca","Africa/Conakry","Africa/Dakar","Africa/Dar_es_Salaam","Africa/Djibouti","Africa/Douala","Africa/El_Aaiun","Africa/Freetown","Africa/Gaborone","Africa/Harare","Africa/Johannesburg","Africa/Juba","Africa/Kampala","Africa/Khartoum","Africa/Kigali","Africa/Kinshasa","Africa/Lagos","Africa/Libreville","Africa/Lome","Africa/Luanda","Africa/Lubumbashi","Africa/Lusaka","Africa/Malabo","Africa/Maputo","Africa/Maseru","Africa/Mbabane","Africa/Mogadishu","Africa/Monrovia","Africa/Nairobi","Africa/Ndjamena","Africa/Niamey","Africa/Nouakchott","Africa/Ouagadougou","Africa/Porto-Novo","Africa/Sao_Tome","Africa/Tripoli","Africa/Tunis","Africa/Windhoek","America/Adak","America/Anchorage","America/Anguilla","America/Antigua","America/Araguaina","America/Argentina/Buenos_Aires","America/Argentina/Catamarca","America/Argentina/Cordoba","America/Argentina/Jujuy","America/Argentina/La_Rioja","America/Argentina/Mendoza","America/Argentina/Rio_Gallegos","America/Argentina/Salta","America/Argentina/San_Juan","America/Argentina/San_Luis","America/Argentina/Tucuman","America/Argentina/Ushuaia","America/Aruba","America/Asuncion","America/Atikokan","America/Bahia","America/Bahia_Banderas","America/Barbados","America/Belem","America/Belize","America/Blanc-Sablon","America/Boa_Vista","America/Bogota","America/Boise","America/Cambridge_Bay","America/Campo_Grande","America/Cancun","America/Caracas","America/Cayenne","America/Cayman","America/Chicago","America/Chihuahua","America/Ciudad_Juarez","America/Costa_Rica","America/Cuiaba","America/Curacao","America/Dawson","America/Dawson_Creek","America/Denver","America/Detroit","America/Dominica","America/Edmonton","America/El_Salvador","America/Fort_Nelson","America/Fortaleza","America/Glace_Bay","America/Godthab","America/Goose_Bay","America/Grand_Turk","America/Grenada","America/Guadeloupe","America/Guatemala","America/Guayaquil","America/Guyana","America/Halifax","America/Havana","America/Hermosillo","America/Indiana/Indianapolis","America/Inuvik","America/Iqaluit","America/Jamaica","America/Juneau","America/Kentucky/Louisville","America/Kralendijk","America/La_Paz","America/Lima","America/Los_Angeles","America/Lower_Princes","America/Maceio","America/Managua","America/Manaus","America/Martinique","America/Matamoros","America/Mazatlan","America/Menominee","America/Merida","America/Mexico_City","America/Miquelon","America/Moncton","America/Monterrey","America/Montevideo","America/Montserrat","America/Nassau","America/New_York","America/Nome","America/Noronha","America/Nuuk","America/Panama","America/Paramaribo","America/Phoenix","America/Port-au-Prince","America/Port_of_Spain","America/Porto_Velho","America/Puerto_Rico","America/Punta_Arenas","America/Rankin_Inlet","America/Recife","America/Regina","America/Resolute","America/Rio_Branco","America/Santarem","America/Santiago","America/Santo_Domingo","America/Sao_Paulo","America/Scoresbysund","America/Sitka","America/St_Barthelemy","America/St_Johns","America/St_Kitts","America/St_Lucia","America/St_Thomas","America/St_Vincent","America/Swift_Current","America/Tegucigalpa","America/Thule","America/Tijuana","America/Toronto","America/Tortola","America/Vancouver","America/Whitehorse","America/Winnipeg","America/Yakutat","Arctic/Longyearbyen","Asia/Aden","Asia/Almaty","Asia/Amman","Asia/Anadyr","Asia/Aqtau","Asia/Aqtobe","Asia/Ashgabat","Asia/Atyrau","Asia/Baghdad","Asia/Bahrain","Asia/Baku","Asia/Bangkok","Asia/Barnaul","Asia/Beirut","Asia/Bishkek","Asia/Brunei","Asia/Chita","Asia/Choibalsan","Asia/Colombo","Asia/Damascus","Asia/Dhaka","Asia/Dili","Asia/Dubai","Asia/Dushanbe","Asia/Famagusta","Asia/Ho_Chi_Minh","Asia/Hong_Kong","Asia/Hovd","Asia/Irkutsk","Asia/Jakarta","Asia/Jayapura","Asia/Jerusalem","Asia/Kabul","Asia/Kamchatka","Asia/Karachi","Asia/Kathmandu","Asia/Khandyga","Asia/Kolkata","Asia/Krasnoyarsk","Asia/Kuala_Lumpur","Asia/Kuching","Asia/Kuwait","Asia/Macau","Asia/Magadan","Asia/Makassar","Asia/Manila","Asia/Muscat","Asia/Nicosia","Asia/Novokuznetsk","Asia/Novosibirsk","Asia/Omsk","Asia/Oral","Asia/Phnom_Penh","Asia/Pontianak","Asia/Pyongyang","Asia/Qatar","Asia/Qostanay","Asia/Qyzylorda","Asia/Riyadh","Asia/Sakhalin","Asia/Samarkand","Asia/Seoul","Asia/Shanghai","Asia/Singapore","Asia/Srednekolymsk","Asia/Taipei","Asia/Tashkent","Asia/Tbilisi","Asia/Tehran","Asia/Thimphu","Asia/Tokyo","Asia/Tomsk","Asia/Ulaanbaatar","Asia/Ust-Nera","Asia/Vientiane","Asia/Vladivostok","Asia/Yakutsk","Asia/Yangon","Asia/Yekaterinburg","Asia/Yerevan","Atlantic/Azores","Atlantic/Bermuda","Atlantic/Canary","Atlantic/Cape_Verde","Atlantic/Faroe","Atlantic/Madeira","Atlantic/Reykjavik","Atlantic/St_Helena","Atlantic/Stanley","Australia/Adelaide","Australia/Brisbane","Australia/Broken_Hill","Australia/Darwin","Australia/Hobart","Australia/Lindeman","Australia/Lord_Howe","Australia/Melbourne","Australia/Perth","Australia/Sydney","Europe/Amsterdam","Europe/Astrakhan","Europe/Athens","Europe/Belgrade","Europe/Berlin","Europe/Bratislava","Europe/Brussels","Europe/Bucharest","Europe/Budapest","Europe/Chisinau","Europe/Copenhagen","Europe/Dublin","Europe/Gibraltar","Europe/Guernsey","Europe/Helsinki","Europe/Isle_of_Man","Europe/Istanbul","Europe/Jersey","Europe/Kaliningrad","Europe/Kirov","Europe/Lisbon","Europe/Ljubljana","Europe/London","Europe/Luxembourg","Europe/Madrid","Europe/Malta","Europe/Mariehamn","Europe/Minsk","Europe/Moscow","Europe/Oslo","Europe/Paris","Europe/Podgorica","Europe/Prague","Europe/Riga","Europe/Rome","Europe/Samara","Europe/Sarajevo","Europe/Saratov","Europe/Skopje","Europe/Sofia","Europe/Stockholm","Europe/Tallinn","Europe/Tirane","Europe/Ulyanovsk","Europe/Vienna","Europe/Vilnius","Europe/Volgograd","Europe/Warsaw","Europe/Zagreb","Europe/Zurich","Indian/Antananarivo","Indian/Christmas","Indian/Cocos","Indian/Comoro","Indian/Mahe","Indian/Maldives","Indian/Mauritius","Indian/Mayotte","Indian/Reunion","Pacific/Apia","Pacific/Auckland","Pacific/Bougainville","Pacific/Chatham","Pacific/Chuuk","Pacific/Easter","Pacific/Efate","Pacific/Fiji","Pacific/Funafuti","Pacific/Galapagos","Pacific/Gambier","Pacific/Guadalcanal","Pacific/Guam","Pacific/Honolulu","Pacific/Kiritimati","Pacific/Kosrae","Pacific/Kwajalein","Pacific/Majuro","Pacific/Marquesas","Pacific/Nauru","Pacific/Niue","Pacific/Norfolk","Pacific/Noumea","Pacific/Pago_Pago","Pacific/Palau","Pacific/Pohnpei","Pacific/Port_Moresby","Pacific/Rarotonga","Pacific/Saipan","Pacific/Tahiti","Pacific/Tarawa","Pacific/Tongatapu","Pacific/Wake","Pacific/Wallis"];
@@ -1084,7 +1084,12 @@ function cleanTrips(a){
   const okLeg = l => l && typeof l === 'object' && typeof l.from === 'string' && typeof l.to === 'string' && /^[A-Z]{3}$/.test(l.from) && /^[A-Z]{3}$/.test(l.to)
     && (l.date == null || cleanDate(l.date)) && (l.dep == null || cleanTime(l.dep)) && (l.arr == null || cleanTime(l.arr));
   return a.filter(t => t && typeof t === 'object' && typeof t.id === 'string' && Array.isArray(t.legs)).map(t => {
-    const legs = t.legs.filter(okLeg).map(l => ({...l, airline: typeof l.airline === 'string' ? l.airline : '', flight: typeof l.flight === 'string' ? l.flight : String(l.flight ?? '')}));
+    /* 날짜·시간·글자 칸도 형식을 확인: 하나라도 망가지면 첫 화면이 통째로 안 그려지므로 그 칸만 비움 */
+    const opt = (v, f) => v == null ? null : f(v);
+    const legs = t.legs.filter(okLeg).map(l => ({...l, airline: typeof l.airline === 'string' ? l.airline.slice(0, 3) : '', flight: (typeof l.flight === 'string' ? l.flight : String(l.flight ?? '')).slice(0, 8),
+      boarding: opt(l.boarding, cleanTime), arrDate: opt(l.arrDate, cleanDate), terminal: opt(l.terminal, cleanTerm), gate: opt(l.gate, v => cleanStr(v, 6)), seat: opt(l.seat, v => cleanStr(v, 5)),
+      pnr: opt(l.pnr, v => cleanStr(v, 8)), cabin: opt(l.cabin, v => cleanStr(v, 20)), baggage: opt(l.baggage, v => cleanStr(v, 12)), operatedBy: opt(l.operatedBy, v => cleanStr(v, 3)), marketing: opt(l.marketing, v => cleanStr(v, 12)),
+      seats: l.seats && typeof l.seats === 'object' && !Array.isArray(l.seats) ? Object.fromEntries(Object.entries(l.seats).filter(([k, v]) => typeof v === 'string' && v.length <= 5 && k.length <= 60).slice(0, 12)) : undefined}));
     return {...t, legs, names: Array.isArray(t.names) ? t.names.filter(n => typeof n === 'string') : [], passes: Array.isArray(t.passes) ? t.passes.filter(p => p && Array.isArray(p.legs)) : [], s: t.s && typeof t.s === 'object' ? t.s : {}, check: t.check && typeof t.check === 'object' ? t.check : {}};
   }).filter(t => t.legs.length);
 }
@@ -1117,7 +1122,14 @@ function exampleTrip(){
   };
 }
 /* 여행이 끝난 시각(마지막 편 도착, 없으면 출발·날짜)과 지난 여행인지 */
+/* 같은 여행을 여러 번 계산하지 않게 기억해 둠 (항공편 내용이 바뀌면 다시 계산) */
+const spanCache = new WeakMap();
 function tripSpan(t){
+  const sig = JSON.stringify(t.legs), c = spanCache.get(t);
+  if (c && c.sig === sig) return c.v;
+  const v = tripSpan0(t); spanCache.set(t, {sig, v}); return v;
+}
+function tripSpan0(t){
   const legs = t.legs.map(resolveLeg).sort((a, b) => sortKey(a) - sortKey(b)), f = legs[0], last = legs[legs.length - 1];
   const start = f ? sortKey(f) : Infinity;
   let end = last ? (last.arrMs ?? last.arrEst ?? last.depMs) : null;
@@ -1177,11 +1189,11 @@ function heroView(t, j, plan){
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h7"/></svg>
         길찾기 · 환승역 보기</a>
     </div>`}
-    <div class="board-more">
-      <button class="mini" type="button" data-act="taxi">택시 기사에게 보여 주기</button>
+    ${isPastTrip(t) && !hasPass ? '' : `<div class="board-more">
+      ${isPastTrip(t) ? '' : '<button class="mini" type="button" data-act="taxi">택시 기사에게 보여 주기</button>'}
       ${hasPass ? `<button class="mini" type="button" data-act="pass-view">탑승권 보기</button>` : ''}
-      <button class="mini" type="button" data-act="alerts">알림 <b>${nAlerts}</b></button>
-    </div>
+      ${isPastTrip(t) ? '' : `<button class="mini" type="button" data-act="alerts">알림 <b>${nAlerts}</b></button>`}
+    </div>`}
     ${devTzDiffers ? `<p class="tz-note">모든 시각은 ${esc(aptKo(f.from))} 현지 시각이에요. 지금 폰 시간 기준으로는 ${esc(fmtTime(plan.leaveMs, DEVICE_TZ))}에 나가면 돼요.</p>` : ''}
   </section>`;
 }
@@ -1232,8 +1244,8 @@ function destView(t, j){
     <div class="dest-acts">
       ${ck ? `<button class="row-btn" type="button" data-act="checklist">${ck.home ? '귀국 준비' : '입국 준비'} <b>${ck.done}/${ck.total}</b></button>` : ''}
       <button class="row-btn${ck ? '' : ' full'}" type="button" data-act="share-arr">도착 시각 보내기</button>
-      ${abroadOf(j) ? `<button class="row-btn" type="button" data-act="tz">🕐 시차·현지 시간 <b>${esc((() => { const ab = abroadOf(j), ms = at ?? Date.now(), d = (offsetMin(ab.a.tz, ms) - offsetMin(HOME_TZ, ms)) / 60; return d ? (d > 0 ? '+' : '') + (Math.round(d * 10) / 10) + '시간' : '시차 없음'; })())}</b></button>` : ''}
-      ${!t.example && B.cc !== 'KR' && IEUM_LANG[B.cc] ? `<button class="row-btn" type="button" data-act="ieum" data-cc="${esc(B.cc)}">🗣️ 이음으로 ${esc(IEUM_NAME[IEUM_LANG[B.cc]] || '')} 준비</button>` : ''}
+      ${abroadOf(j) ? `<button class="row-btn full" type="button" data-act="tz">시차·현지 시간 <b>${esc((() => { const ab = abroadOf(j), ms = at ?? Date.now(), d = (offsetMin(ab.a.tz, ms) - offsetMin(HOME_TZ, ms)) / 60; return d ? (d > 0 ? '+' : '') + (Math.round(d * 10) / 10) + '시간' : '시차 없음'; })())}</b></button>` : ''}
+      ${!t.example && B.cc !== 'KR' && IEUM_LANG[B.cc] ? `<button class="row-btn" type="button" data-act="ieum" data-cc="${esc(B.cc)}">이음으로 ${esc(IEUM_NAME[IEUM_LANG[B.cc]] || '')} 준비</button>` : ''}
     </div>
   </section>`;
 }
@@ -1453,12 +1465,13 @@ function toast(msg, action, ms){
 }
 /* 지우기 되돌리기: 6초 안에 '되돌리기'를 누르면 지우기 전으로. 탑승권 사진은 6초가 지난 뒤에 지움 */
 let undoBox = null;
-function undoable(msg, before, imgsOf){
+/* 지우기 전 모습을 글자로 찍어 둠 (지운 뒤에 찍으면 이미 바뀐 값이 들어가서 되돌릴 수 없음) */
+const snapState = () => JSON.stringify({trips: state.trips, current: state.current, pack: state.pack, aptNotes: state.aptNotes || {}});
+function undoable(msg, snap, imgsOf, reopen){
   if (undoBox) undoBox.finish();
-  const snap = JSON.stringify({trips: before.trips, current: before.current});
   const box = {done: false, finish(){ if (box.done) return; box.done = true; if (undoBox === box) undoBox = null; for (const t of imgsOf || []) removeTripImages(t); }};
   undoBox = box;
-  toast(msg, {label: '되돌리기', fn(){ if (box.done) return; box.done = true; undoBox = null; const o = JSON.parse(snap); state.trips = o.trips; state.current = o.current; save(); render(); if ($('#layer').firstChild && $('#trip-find')) tripsSheet(); toast('되돌렸어요'); }, done: () => box.finish()});
+  toast(msg, {label: '되돌리기', fn(){ if (box.done) return; box.done = true; undoBox = null; const o = JSON.parse(snap); state.trips = cleanTrips(o.trips); state.current = o.current; state.pack = o.pack || []; state.aptNotes = o.aptNotes || {}; save(); render(); if (reopen) { if ($('#layer').firstChild) reopen(); } else if ($('#layer').firstChild && $('#trip-find')) tripsSheet(); toast('되돌렸어요'); }, done: () => box.finish()});
 }
 function openSheet(html, label){
   closeSheet();
@@ -1491,8 +1504,9 @@ function askLeave(box, doClose) {
   var cands = [];
   Array.prototype.forEach.call(box.querySelectorAll('button'), function (b) {
     var t = (b.textContent || '').replace(/\s+/g, ' ').trim();
-    if (!b.disabled && b.offsetWidth >= box.offsetWidth * 0.4 && /^(저장|저장하기|등록|등록하기|추가|추가하기|넣기|만들기|고치기)$/.test(t)) cands.push(b); // 아래쪽 큰 버튼만
+    if (!b.disabled && b.offsetWidth >= box.offsetWidth * 0.4 && (b.hasAttribute('data-save') || (t.length <= 14 && /(저장|등록|추가|넣기|만들기|고치기)/.test(t)))) cands.push(b); // 아래쪽 큰 저장 버튼 ('번역해서 넣기'처럼 앞에 말이 붙어도 찾아요)
   });
+  var marked = cands.filter(function (b) { return b.hasAttribute('data-save'); }); if (marked.length === 1) cands = marked;
   var save = cands.length === 1 ? cands[0] : null; // 큰 저장 버튼이 딱 하나일 때만 (헷갈리면 묻지 않고 닫아요)
   if (!save) { doClose(); return; } // 저장 버튼이 없는 창(설정 등)은 바로 저장되니 묻지 않아요
   var auto = false; try { auto = localStorage.getItem('leave-auto-save') === '1'; } catch (e) { /* 무시 */ }
@@ -1531,31 +1545,37 @@ function tripRow(t, cur){
 }
 function tripsSheet(){
   const cur = (currentTrip() || {}).id;
+  pastCur = cur;
   const all = state.trips.map(t => ({t, sp: tripSpan(t), past: isPastTrip(t)}));
   const now = Date.now(), live = all.filter(x => !x.past && x.sp.start < now).sort((a, b) => a.sp.start - b.sp.start);
   const up = all.filter(x => !x.past && !(x.sp.start < now)).sort((a, b) => a.sp.start - b.sp.start), past = all.filter(x => x.past).sort((a, b) => b.sp.start - a.sp.start);
+  pastRest = past.slice(PAST_FIRST);
   const seg = (name, v, cur, opts) => `<div class="seg" role="group" aria-label="${name}">${opts.map(([val, label]) => `<button class="seg-b" type="button" data-act="look" data-k="${v}" data-v="${val}" aria-pressed="${cur === val}">${label}</button>`).join('')}</div>`;
   openSheet(`<div class="sheet-head"><h2>내 항공권</h2>${X_BTN}</div>
     ${state.trips.length > 1 ? `<input class="trip-find" id="trip-find" type="search" placeholder="찾기 (편명·공항·도시·이름·예약번호)" aria-label="항공권 찾기" autocomplete="off"><p class="msg" id="trip-none" hidden>찾는 항공권이 없어요. 띄어 쓴 낱말이 모두 들어간 것만 보여 드려요.</p>` : ''}
-    ${!state.trips.length ? '<p class="msg">아직 저장된 항공권이 없어요. 아래 버튼으로 항공권을 찍으면 자동으로 저장돼요.</p>' : ''}
+    ${!state.trips.length ? '<p class="msg">아직 저장된 항공권이 없어요. 아래 \'항공권 찍기\'로 찍거나 \'직접 입력\'을 눌러 주세요. 찍은 항공권은 자동으로 저장돼요.</p>' : ''}
     ${live.length ? `<p class="trip-sec"><span data-l="지금 여행 중">지금 여행 중 · ${live.length}개</span></p>${live.map(x => tripRow(x.t, cur)).join('')}` : ''}
     ${up.length ? `<p class="trip-sec"><span data-l="다가오는 여행">다가오는 여행 · ${up.length}개</span></p>${up.map(x => tripRow(x.t, cur)).join('')}` : ''}
-    ${past.length ? `<p class="trip-sec"><span data-l="지난 여행">지난 여행 · ${past.length}개</span><button class="txt-btn" type="button" data-act="del-past">지난 여행 모두 지우기</button></p>${past.map(x => tripRow(x.t, cur)).join('')}` : ''}
+    ${past.length ? `<p class="trip-sec"><span data-l="지난 여행" data-n="${past.length}">지난 여행 · ${past.length}개</span><button class="txt-btn" type="button" data-act="del-past">지난 여행 모두 지우기</button></p>${past.slice(0, PAST_FIRST).map(x => tripRow(x.t, cur)).join('')}${past.length > PAST_FIRST ? `<button class="txt-btn" type="button" data-act="past-more">지난 여행 ${past.length - PAST_FIRST}개 더 보기</button>` : ''}` : ''}
     <p class="msg">일행 탑승권도 찍으면 같은 여정으로 묶여요. ${NATIVE ? "메일·카톡의 e-티켓을 '공유 → Aero'로 바로 넣을 수 있어요." : "앱에서는 메일·카톡의 e-티켓을 '공유 → Aero'로 바로 넣을 수 있어요."}</p>
-    <div class="sheet-actions"><button class="btn btn-secondary" type="button" data-act="manual">직접 입력</button>${NATIVE ? `<button class="btn btn-secondary" type="button" data-act="icn-key">인천공항 실시간${state.icnKey ? ' ✓' : ''}</button><button class="btn btn-secondary" type="button" data-act="check-update">새 버전 확인</button>` : ''}</div>
+    <div class="sheet-actions">${!state.trips.length ? '<button class="btn btn-primary" type="button" data-act="pick-cam">항공권 찍기</button>' : ''}<button class="btn btn-secondary" type="button" data-act="manual">직접 입력</button>${NATIVE ? `<button class="btn btn-secondary" type="button" data-act="icn-key">인천공항 실시간${state.icnKey ? ' ✓' : ''}</button><button class="btn btn-secondary" type="button" data-act="check-update">새 버전 확인</button>` : ''}</div>
     <h3 class="sub-h">화면 설정</h3>
     <div class="set-row"><b>글자 크기</b>${seg('글자 크기', 'fs', state.fs || 0, [[0, '보통'], [1, '크게'], [2, '아주 크게']])}</div>
     <div class="set-row"><b>화면 색</b>${seg('화면 색', 'theme', state.theme || '', [['', '폰 설정 따라'], ['light', '밝게'], ['dark', '어둡게']])}</div>
     <p class="foot-note">항공권 정보와 사진은 이 폰에만 저장돼요. 공항·항공사 데이터: OurAirports, OpenFlights(ODbL), mwgg/Airports.</p>`, '내 항공권');
 }
+/* 지난 여행이 많으면 처음엔 20개만 그리고, '더 보기'나 찾기를 하면 나머지를 그림 */
+const PAST_FIRST = 20; let pastRest = [], pastCur = null;
+function showPastRest(){ const b = $('#layer [data-act=past-more]'); if (!b) return; b.insertAdjacentHTML('beforebegin', pastRest.map(x => tripRow(x.t, pastCur)).join('')); b.remove(); pastRest = []; }
 function filterTrips(q){
   const words = String(q || '').toLowerCase().split(/\s+/).filter(Boolean); let shown = 0;
+  if (words.length) showPastRest();
   document.querySelectorAll('#layer .trip-row').forEach(r => { const ok = words.every(w => r.dataset.q.includes(w)); r.hidden = !ok; if (ok) shown++; });
   /* 찾는 중에는 찾은 개수만 보여 주고, '지난 여행 모두 지우기'는 숨김 (찾은 것 말고 전부 지워지는 일이 없게) */
   document.querySelectorAll('#layer .trip-sec').forEach(h => {
     let n = h.nextElementSibling, cnt = 0, all = 0; while (n && n.classList.contains('trip-row')) { all++; if (!n.hidden) cnt++; n = n.nextElementSibling; }
     h.hidden = !cnt;
-    const l = h.querySelector('[data-l]'); if (l) l.textContent = words.length ? `${l.dataset.l} · 찾은 ${cnt}개` : `${l.dataset.l} · ${all}개`;
+    const l = h.querySelector('[data-l]'); if (l) l.textContent = words.length ? `${l.dataset.l} · 찾은 ${cnt}개` : `${l.dataset.l} · ${l.dataset.n || all}개`;
     const d = h.querySelector('[data-act=del-past]'); if (d) d.hidden = words.length > 0;
   });
   const none = $('#trip-none'); if (none) none.hidden = shown > 0;
@@ -1570,13 +1590,13 @@ function alertsSheet(){
     return `<li class="alert-row${off ? ' off' : ''}"><time class="num">${esc(fmtTime(a.at, a.tz))}<small>${esc(fmtDate(a.at, a.tz).replace(/ \(.\)$/, ''))}</small></time><div class="txt"><b>${esc(a.title)}</b><span>${esc(ALERT_TYPES[a.type])} · ${esc(a.body)}</span></div><input class="sw" type="checkbox" data-alert="${a.type}" ${off ? '' : 'checked'} aria-label="${esc(ALERT_TYPES[a.type])} 알림"></li>`;
   }).join('');
   openSheet(`<div class="sheet-head"><h2>알림·위젯</h2>${X_BTN}</div>
-    <p class="msg">출발 전에 세 번 알려 드려요. 스위치는 같은 종류의 알림을 모두 켜고 꺼요.</p>
+    ${state.trips.length ? '<p class="msg">출발 전에 세 번 알려 드려요. 스위치는 같은 종류의 알림을 모두 켜고 꺼요.</p>' : ''}
     ${rows ? `<ul class="list">${rows}</ul>` : `<p class="msg">${state.trips.length ? '다가오는 알림이 없어요.' : '항공권을 넣으면 출발 전에 세 번 알려 드려요.'}</p>`}
     <p class="foot-note">${NATIVE ? '알림은 이 시각에 자동으로 울려요.' : '미리보기에서는 알림이 울리지 않아요. 앱에서는 이 시각에 자동으로 알려 드려요.'}</p>
     <h3 class="sub-h">홈 화면 위젯</h3>
     ${n ? `<div class="widget-mock" aria-label="위젯 미리보기"><small>공항 출발 · ${esc(fmtDate(n.p.leaveMs, n.p.tz))}</small><span class="t num">${esc(fmtTime(n.p.leaveMs, n.p.tz))}</span><span>${esc(n.p.f.airline)} ${esc(n.p.f.flight)} · ${esc(aptKo(n.p.f.from))} ${esc(termLabel(depTerminal(n.p.f)))}</span><span>${esc(fmtUntil(n.p.leaveMs))}</span></div>` : '<p class="msg">다가오는 출발이 없어요.</p>'}
     <p class="foot-note">앱을 설치하면 홈 화면에 이 위젯을 붙일 수 있어요. 앱을 열지 않아도 출발 시각이 보여요.</p>
-    <div class="sheet-actions"><button class="btn btn-secondary" type="button" data-act="phone-alarm">휴대폰 알람도 맞추기</button></div>`, '알림·위젯');
+    ${n ? '<div class="sheet-actions"><button class="btn btn-secondary" type="button" data-act="phone-alarm">휴대폰 알람도 맞추기</button></div>' : ''}`, '알림·위젯');
 }
 
 function packBlock(mine){ const li = x => `<li>${x.mine ? `<button class="pk-x" type="button" data-act="pack-del" data-id="${esc(x.id.slice(5))}" aria-label="${esc(x.text)} 지우기">×</button>` : ''}<input type="checkbox" id="ck-${esc(x.id)}" data-check="${esc(x.id)}" ${(currentTrip().check || {})[x.id] ? 'checked' : ''}><label for="ck-${esc(x.id)}">${esc(x.text)}</label></li>`;
@@ -1599,7 +1619,7 @@ function checklistSheet(){
   const items = ck.items.filter(x => !x.mine).map(li).join(''), mine = ck.items.filter(x => x.mine);
   if (ck.home) return openSheet(`<div class="sheet-head"><h2>귀국 준비 · 대한민국</h2>${X_BTN}</div>
     <p class="msg">관세청·질병관리청 안내 기준 · 2026년 11월 1일 확인 · 규정은 바뀔 수 있으니 공식 사이트에서 한 번 더 확인해 주세요.</p>
-    <button class="btn btn-secondary df-open" type="button" data-act="dutycalc">🧮 면세 한도 계산기${(t.df || []).length ? ` · ${(t.df || []).length}개 담음` : ''}</button>
+    <button class="btn btn-secondary df-open" type="button" data-act="dutycalc">면세 한도 계산기${(t.df || []).length ? ` · ${(t.df || []).length}개 담음` : ''}</button>
     <ul class="checks">${items}</ul>
 ${packBlock(mine)}
     <a class="txt-btn" href="https://www.customs.go.kr/" target="_blank" rel="noopener">관세청 여행자 안내 보기 ↗</a>`, '귀국 준비');
@@ -1634,7 +1654,7 @@ function dutyCalcSheet(){
   const list = t.df || [];
   let sum = 0, unknown = false;
   const rows = list.map((x, i) => { const u = toUsd(x.a, x.c); if (u == null) unknown = true; else sum += u;
-    return `<li><span>${esc(x.a.toLocaleString('ko-KR'))} ${esc(x.c)}${u != null && x.c !== 'USD' ? ` <small>≈ ${esc(nf(u))}달러</small>` : ''}</span><button class="txt-btn" type="button" data-act="df-del" data-i="${i}">빼기</button></li>`; }).join('');
+    return `<li><span>${esc(x.a.toLocaleString('ko-KR'))} ${esc(x.c)}${u != null && x.c !== 'USD' ? ` <small>≈ ${esc(nf(u))}달러</small>` : ''}</span><button class="pk-x" type="button" data-act="df-del" data-i="${i}" aria-label="${esc(x.a.toLocaleString('ko-KR'))} ${esc(x.c)} 지우기">×</button></li>`; }).join('');
   const over = sum > DF_LIMIT, krw = dfFx ? sum * dfFx.rates.KRW : null;
   const status = !list.length ? '<p class="msg">산 물건 값을 하나씩 넣어 주세요. 영수증 금액 그대로 넣으면 돼요.</p>'
     : unknown ? '<p class="msg">환율을 받아오지 못했어요. 인터넷이 되면 다시 열어 주세요. (달러로 넣으면 바로 계산돼요)</p>'
@@ -1699,6 +1719,7 @@ async function passOverlay(){
       <p class="ov-info">${esc(p.name || '')}<br>${info}</p>
       ${p.raw && p.img ? `<div class="ov-chips"><button class="ov-chip" type="button" data-act="pass-mode" data-m="code" aria-pressed="${mode === 'code'}">${p.fmt === 'qr_code' ? '바코드' : '선명한 QR'}</button><button class="ov-chip" type="button" data-act="pass-mode" data-m="photo" aria-pressed="${mode === 'photo'}">원본 사진</button></div>` : ''}
       <p class="ov-note">${NATIVE ? '화면이 최대 밝기로 바뀌었어요.' : '화면 밝기를 올리면 더 잘 읽혀요. 앱에서는 자동으로 최대 밝기가 돼요.'}${p.raw && p.fmt && p.fmt !== 'qr_code' ? ' 선명한 QR이 안 읽히면 원본 사진을 보여 주세요.' : ''}</p>
+      ${t.example ? '' : '<div class="ov-chips"><button class="ov-chip" type="button" data-act="pass-del">이 탑승권 지우기</button></div>'}
     </div>`, '탑승권');
   try { if (navigator.wakeLock) wakeLock = await navigator.wakeLock.request('screen'); } catch(e){}
   if (NATIVE && NATIVE.setBrightness) try { NATIVE.setBrightness(1); } catch(e){}
@@ -1717,8 +1738,8 @@ function legForm(l){
   return `<div class="form">
     <label>편명<input id="ef-flight" value="${v(l.airline + l.flight)}" placeholder="예: KE703" autocapitalize="characters" autocomplete="off"></label>
     <label>날짜<input id="ef-date" type="date" value="${v(l.date)}"></label>
-    <label>출발 공항<input id="ef-from" value="${v(l.from)}" placeholder="예: ICN 또는 인천" list="apt-list" autocomplete="off"></label>
-    <label>도착 공항<input id="ef-to" value="${v(l.to)}" placeholder="예: NRT 또는 나리타" list="apt-list" autocomplete="off"></label>
+    <label>출발 공항<input id="ef-from" value="${v(l.from)}" placeholder="예: ICN·인천" list="apt-list" autocomplete="off"></label>
+    <label>도착 공항<input id="ef-to" value="${v(l.to)}" placeholder="예: NRT·나리타" list="apt-list" autocomplete="off"></label>
     <label>출발 시각<input id="ef-dep" type="time" value="${v(l.dep)}"></label>
     <label>도착 시각<input id="ef-arr" type="time" value="${v(l.arr)}"></label>
     <label>터미널<input id="ef-term" value="${v(l.terminal)}" placeholder="비우면 자동"></label>
@@ -1786,12 +1807,12 @@ let editing = null;
 function editSheet(t, i){
   editing = {trip: t.id, i}; formWarned = '';
   openSheet(`<div class="sheet-head"><h2>항공편 고치기</h2>${X_BTN}</div>${legForm(t.legs[i])}
-    <div class="sheet-actions"><button class="btn btn-secondary" type="button" data-act="del-leg">이 구간 지우기</button><button class="btn btn-primary" type="button" data-act="save-leg">저장</button></div>`, '항공편 고치기');
+    <div class="sheet-actions"><button class="btn btn-secondary" type="button" data-act="del-leg">이 구간 지우기</button><button class="btn btn-primary" type="button" data-act="save-leg" data-save>저장</button></div>`, '항공편 고치기');
 }
 function manualSheet(){
   editing = {trip: null, i: -1}; formWarned = '';
   openSheet(`<div class="sheet-head"><h2>직접 입력</h2>${X_BTN}</div><p class="msg">편명·공항·날짜만 있으면 나머지는 자동으로 계산해요. 날짜는 꼭 골라 주세요. 전에 넣은 편명이면 공항·시각을 저절로 채워요.</p>${legForm({airline: '', flight: '', from: '', to: '', date: ''})}
-    <div class="sheet-actions"><button class="btn btn-primary" type="button" data-act="save-leg">추가</button></div>`, '직접 입력');
+    <div class="sheet-actions"><button class="btn btn-primary" type="button" data-act="save-leg" data-save>추가</button></div>`, '직접 입력');
 }
 
 /* ---------- reading a ticket ---------- */
@@ -1816,8 +1837,8 @@ function drawScaled(bmp, maxSide, rot){
 const canvasBlob = (c, type, q) => new Promise(r => c.toBlob(r, type, q));
 async function fileToImages(file){
   if (file.type === 'application/pdf' || /\.pdf$/i.test(file.name || '')) {
-    await loadScript(PDFJS_URL);
-    const lib = window.pdfjsLib; lib.GlobalWorkerOptions.workerSrc = PDFJS_WORKER;
+    if (NATIVE) throw new Error('native');   // 앱(APK) 안에서는 바깥 스크립트를 불러오지 않음
+    const lib = await import(PDFJS_URL); lib.GlobalWorkerOptions.workerSrc = new URL(PDFJS_WORKER, location.href).href;
     const doc = await lib.getDocument({data: new Uint8Array(await file.arrayBuffer()), isEvalSupported: false}).promise;
     const out = [];
     for (let i = 1; i <= Math.min(doc.numPages, 2); i++) {
@@ -1882,7 +1903,7 @@ function scanFail(msg){
   a.innerHTML = `<button class="btn btn-secondary" type="button" data-act="manual">직접 입력</button><button class="btn btn-primary" type="button" data-act="pick-cam">다시 찍기</button>`;
 }
 const TEXT_ERR = {
-  preview: '미리보기에서는 글자 읽기를 하지 않아요. 앱에서는 폰 안에서 읽어요',
+  preview: '아이폰(웹)에서는 바코드만 읽어요',
 };
 let busy = false;
 async function handleFile(file){
@@ -1929,7 +1950,7 @@ async function finishScan(groups, tLegs, tPax, blob){
     upsertTrip(legs, g.name || tPax, {raw: g.raw, fmt: g.fmt, img: imgKey});
     found = Math.max(found, legs.length);
   }
-  if (!found) { step('done', 'skip'); scanFail('항공권에서 항공편을 찾지 못했어요. 바코드나 편명이 잘 보이게 다시 찍거나, 직접 입력해 주세요.'); return; }
+  if (!found) { step('done', 'skip'); scanFail(NATIVE ? '항공권에서 항공편을 찾지 못했어요. 바코드나 편명이 잘 보이게 다시 찍거나, 직접 입력해 주세요.' : '바코드를 찾지 못했어요. 아이폰(웹)에서는 바코드만 읽어요. 탑승권 바코드가 잘 보이게 다시 찍거나, 직접 입력해 주세요.'); return; }
   step('done', 'done');
   refreshLive(false);
   setTimeout(() => { closeSheet(); addedToast(groups.length > 1 ? `탑승권 ${groups.length}장을 한 여정으로 묶었어요` : `항공편 ${found}개를 찾았어요`, upsertTrip.last); }, 650);
@@ -2027,14 +2048,15 @@ async function refreshLive(force){
 document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshLive(false); });
 function icnKeySheet(){
   openSheet(`<div class="sheet-head"><h2>인천공항 실시간 켜기</h2>${X_BTN}</div>
-    <p class="msg">공공데이터포털에서 무료 인증키를 한 번 받아 넣으면, 인천공항 체크인 카운터·게이트·지연·수하물 수취대를 자동으로 보여 드려요.</p>
+    <p class="msg">켜지 않아도 돼요. 출발 시각 안내·알림·탑승권 같은 기본 기능은 그대로 다 써요.</p>
+    <p class="msg">더 보고 싶으면 공공데이터포털에서 무료 인증키를 한 번 받아 넣어 주세요. 인천공항 체크인 카운터·게이트·지연·수하물 수취대를 자동으로 보여 드려요. 이때 인천공항에는 편명만 보내요.</p>
     <ol class="steps">
       <li class="done"><span class="ic">1</span><div>공공데이터포털에 로그인해요 (카카오·네이버 로그인 가능)</div></li>
       <li class="done"><span class="ic">2</span><div>'인천국제공항공사 여객편 운항현황' 페이지에서 활용신청을 눌러요</div></li>
       <li class="done"><span class="ic">3</span><div>마이페이지 → 개발계정에서 '일반 인증키(Decoding)'를 복사해 아래에 붙여 넣어요</div></li>
     </ol>
     <a class="txt-btn" href="https://www.data.go.kr/tcs/dss/selectDataSetList.do?keyword=%EC%9D%B8%EC%B2%9C%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD%EA%B3%B5%EC%82%AC%20%EC%97%AC%EA%B0%9D%ED%8E%B8%20%EC%9A%B4%ED%95%AD%ED%98%84%ED%99%A9" target="_blank" rel="noopener">공공데이터포털 열기 ↗</a>
-    <div class="form"><label class="full">인증키<input id="icn-key" value="${esc(state.icnKey)}" placeholder="여기에 붙여넣기" autocomplete="off" spellcheck="false"></label></div>
+    <div class="form"><label class="full">인증키<input id="icn-key" value="${esc(state.icnKey)}" placeholder="여기에 붙여 넣기" autocomplete="off" spellcheck="false"></label></div>
     <div class="sheet-actions"><button class="btn btn-primary" type="button" data-act="save-icn-key">저장</button></div>
     <p class="foot-note">인증키는 이 폰에만 저장돼요. 승인까지 1~2시간 걸릴 수 있어요.</p>`, '인천공항 실시간 켜기');
 }
@@ -2111,7 +2133,7 @@ document.addEventListener('click', e => {
   const act = el.dataset.act, t = currentTrip();
   if (act === 'pack-add') { const inp = $('#pk-in'), text = (el.dataset.text || (inp && inp.value) || '').trim().slice(0, 40); if (!text) { if (inp) inp.focus(); return; }
     if (!state.pack.some(x => x.text === text)) { state.pack.push({id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5), text}); save(); } render(); return checklistSheet(); }
-  if (act === 'pack-del') { state.pack = state.pack.filter(x => x.id !== el.dataset.id); save(); render(); return checklistSheet(); }
+  if (act === 'pack-del') { const before = snapState(); state.pack = state.pack.filter(x => x.id !== el.dataset.id); save(); render(); checklistSheet(); return undoable('준비물을 지웠어요', before, [], checklistSheet); }
   if (act === 'scrim') { if (e.target === el) { if (sheetDirty) { toast('입력한 내용이 있어요. 닫으려면 × 버튼을 눌러 주세요'); return; } closeSheet(); } return; }
   if (act === 'close') { if (el.closest('.sheet') && leaveCheck()) return; return closeSheet(); }
   if (act === 'pick-cam') { closeSheet(); if (NATIVE && NATIVE.pick) return NATIVE.pick('camera'); return $('#f-cam').click(); }
@@ -2131,15 +2153,25 @@ document.addEventListener('click', e => {
   if (act === 'note-chip') { const inp = $('#note-in'); if (inp) { inp.value = el.dataset.text + ' · '; inp.focus(); } return; }
   if (act === 'note-add') { const inp = $('#note-in'), text = ((inp && inp.value) || '').trim().replace(/\s*·\s*$/, '').slice(0, 80), code = el.dataset.code; if (!text || !/^[A-Z0-9]{3}$/.test(code)) { if (inp) inp.focus(); return; }
     state.aptNotes = state.aptNotes || {}; const a = state.aptNotes[code] || (state.aptNotes[code] = []); if (a.length >= 30) return toast('공항마다 30개까지 적을 수 있어요'); a.push({id: uid(), text}); save(); render(); toast('메모를 적었어요. 다음 여행에도 나와요'); return aptNotesSheet(code); }
-  if (act === 'note-del') { const code = el.dataset.code, a = notesOf(code); if (state.aptNotes && a.length) { state.aptNotes[code] = a.filter(x => x.id !== el.dataset.id); if (!state.aptNotes[code].length) delete state.aptNotes[code]; save(); render(); } return aptNotesSheet(code); }
+  if (act === 'note-del') { const code = el.dataset.code, a = notesOf(code), before = snapState(); if (state.aptNotes && a.length) { state.aptNotes[code] = a.filter(x => x.id !== el.dataset.id); if (!state.aptNotes[code].length) delete state.aptNotes[code]; save(); render(); } aptNotesSheet(code); return undoable('메모를 지웠어요', before, [], () => aptNotesSheet(code)); }
   if (act === 'dutycalc') return dutyCalcSheet();
   if (act === 'df-cur') { if (t) { t.dfCur = el.dataset.c; save(); } return dutyCalcSheet(); }
   if (act === 'df-add') return dfAdd();
-  if (act === 'df-del') { if (t && t.df) { t.df.splice(+el.dataset.i, 1); save(); } return dutyCalcSheet(); }
-  if (act === 'df-clear') { if (t) { t.df = []; save(); } return dutyCalcSheet(); }
+  if (act === 'df-del') { const before = snapState(); if (t && t.df) { t.df.splice(+el.dataset.i, 1); save(); } dutyCalcSheet(); return undoable('물건을 지웠어요', before, [], dutyCalcSheet); }
+  if (act === 'df-clear') {
+    if (!el.classList.contains('confirm')) { el.classList.add('confirm'); el.textContent = '한 번 더 누르면 모두 지워요'; return; }
+    const before = snapState(); if (t) { t.df = []; save(); } dutyCalcSheet(); return undoable('산 물건을 모두 지웠어요', before, [], dutyCalcSheet);
+  }
   if (act === 'share-arr') return shareSheet();
   if (act === 'taxi') return taxiOverlay();
   if (act === 'pass-view') { passIdx = 0; passMode = null; return passOverlay(); }
+  if (act === 'past-more') return showPastRest();
+  if (act === 'pass-del') {
+    if (!el.classList.contains('confirm')) { el.classList.add('confirm'); el.textContent = '한 번 더 누르면 지워요'; return; }
+    const t = currentTrip(); if (!t || t.example) return; const p = passesFor(t, journeysOf(t).j)[passIdx]; if (!p) return;
+    const before = snapState(); t.passes = (t.passes || []).filter(x => x !== p); passIdx = 0; passMode = null;
+    save(); closeSheet(); render(); return undoable('탑승권을 지웠어요', before, [{passes: [p]}]);
+  }
   if (act === 'pass-pick') { passIdx = +el.dataset.i; passMode = null; return passOverlay(); }
   if (act === 'pass-mode') { passMode = el.dataset.m; return passOverlay(); }
   if (act === 'open-app') { if (NATIVE && NATIVE.openApp) { e.preventDefault(); try { NATIVE.openApp(el.dataset.pkg, el.href); } catch(err){} } return; }
@@ -2173,7 +2205,7 @@ document.addEventListener('click', e => {
     const v = readForm(); if (!v) return;
     if (editing && editing.trip) {
       const tr = state.trips.find(x => x.id === editing.trip); if (!tr) return closeSheet();
-      const leg = tr.legs[editing.i]; Object.assign(leg, v);
+      const leg = tr.legs[editing.i], oldKey = legKey(leg); Object.assign(leg, v); moveLegKey(tr, oldKey, legKey(leg));
       if (v.seat) { leg.seats = leg.seats || {}; leg.seats[(tr.names || [])[0] || '탑승객'] = v.seat; }
       state.current = tr.id; save(); render(); closeSheet(); return toast('고쳤어요');
     }
@@ -2181,7 +2213,7 @@ document.addEventListener('click', e => {
   }
   if (act === 'del-leg') {
     const tr = state.trips.find(x => x.id === editing.trip); if (!tr) return closeSheet();
-    const before = {trips: state.trips, current: state.current};
+    const before = snapState();
     tr.legs.splice(editing.i, 1);
     const gone = !tr.legs.length; if (gone) state.trips = state.trips.filter(x => x !== tr);
     save(); render(); closeSheet(); return undoable('구간을 지웠어요', before, gone ? [tr] : []);
@@ -2189,7 +2221,7 @@ document.addEventListener('click', e => {
   if (act === 'pick-trip') { state.current = el.dataset.id; state.open = null; save(); render(); closeSheet(); return window.scrollTo({top: 0}); }
   if (act === 'del-trip') {
     if (!el.classList.contains('confirm')) { el.classList.add('confirm'); el.textContent = '지우기'; el.setAttribute('aria-label', '한 번 더 누르면 지워요'); return; }
-    const before = {trips: state.trips, current: state.current}, tr = state.trips.find(x => x.id === el.dataset.id);
+    const before = snapState(), tr = state.trips.find(x => x.id === el.dataset.id);
     state.trips = state.trips.filter(x => x.id !== el.dataset.id);
     if (state.current === el.dataset.id) state.current = null;
     save(); render(); tripsSheet(); return undoable('항공권을 지웠어요', before, tr ? [tr] : []);
@@ -2197,7 +2229,7 @@ document.addEventListener('click', e => {
   if (act === 'del-past') {
     if (!el.classList.contains('confirm')) { el.classList.add('confirm'); el.textContent = '한 번 더 누르면 모두 지워요'; return; }
     const fq = $('#trip-find'); if (fq && fq.value.trim()) return;   // 찾는 중에는 모두 지우기를 하지 않음
-    const before = {trips: state.trips, current: state.current}, gone = state.trips.filter(isPastTrip);
+    const before = snapState(), gone = state.trips.filter(isPastTrip);
     state.trips = state.trips.filter(x => !gone.includes(x));
     if (gone.some(x => x.id === state.current)) state.current = null;
     save(); render(); tripsSheet(); return undoable(`지난 여행 ${gone.length}개를 지웠어요`, before, gone);
@@ -2205,6 +2237,13 @@ document.addEventListener('click', e => {
   if (act === 'look') { const k = el.dataset.k; state[k] = k === 'fs' ? +el.dataset.v : el.dataset.v; applyLook(); save(); return tripsSheet(); }
 });
 function selectText(id){ const el = document.getElementById(id); if (!el) return; const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+/* 편명·날짜·공항을 고치면 구간 이름(legKey)이 바뀌므로, 그 이름에 묶인 설정·탑승권·운항·날씨도 새 이름으로 옮김 */
+function moveLegKey(t, a, b){
+  if (a === b) return;
+  for (const k of ['s', 'rt', 'wx']) if (t[k] && t[k][a] !== undefined) { if (t[k][b] === undefined) t[k][b] = t[k][a]; delete t[k][a]; }
+  for (const p of t.passes || []) if (Array.isArray(p.legs)) p.legs = p.legs.map(x => x === a ? b : x);
+  if (rtNotes[a] !== undefined) { rtNotes[b] = rtNotes[a]; delete rtNotes[a]; }
+}
 function removeTripImages(t){ for (const p of t.passes || []) if (p.img && !state.trips.some(x => x !== t && (x.passes || []).some(q => q.img === p.img))) idb.del(p.img); }
 document.addEventListener('change', e => {
   const el = e.target;
@@ -2216,7 +2255,7 @@ document.addEventListener('change', e => {
   if (el.dataset.alert) { state.alertsOff[el.dataset.alert] = !el.checked; save(); render(); return alertsSheet(); }
   if (el.id === 'pp-exp') { state.passport = cleanDate(el.value); save(); return checklistSheet(); }
 });
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#layer').firstChild) closeSheet(); if (e.key === 'Enter' && e.target && e.target.id === 'df-amt') dfAdd(); if (e.key === 'Enter' && e.target && e.target.id === 'pk-in') { e.preventDefault(); const b = document.querySelector('.pk-add [data-act=pack-add]'); if (b) b.click(); } });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#layer').firstChild) { if (!leaveCheck()) closeSheet(); } if (e.key === 'Enter' && e.target && e.target.id === 'df-amt') dfAdd(); if (e.key === 'Enter' && e.target && e.target.id === 'pk-in') { e.preventDefault(); const b = document.querySelector('.pk-add [data-act=pack-add]'); if (b) b.click(); } });
 for (const id of ['f-cam', 'f-file']) $('#' + id).addEventListener('change', e => { const f = e.target.files && e.target.files[0]; e.target.value = ''; handleFile(f); });
 document.addEventListener('paste', e => { const f = e.clipboardData && e.clipboardData.files && e.clipboardData.files[0]; if (f && (f.type.startsWith('image/') || f.type === 'application/pdf')) { e.preventDefault(); handleFile(f); } });
 let dropHint = null;
@@ -2236,7 +2275,7 @@ refreshLive(false);
 
 
 <!--APPINFO--><script>
-window.APP_INFO={"name": "Aero", "repo": "mini-2026/aero", "mount": "#ver", "notes": [{"v": "current", "d": "2026.11.20", "items": ["📝 적던 글 지키기: 글을 적다가 앱이 꺼져도 사라지지 않아요. 다시 열어 같은 칸을 열면 적던 글이 그대로 이어져요 (필요 없으면 '버리기'를 눌러 주세요)"]}, {"v": "v1.25", "d": "2026.11.20", "items": ["💾 '저장할까요?' 창에서 '다음부터 묻지 않고 바로 저장'을 누르면, 다음부터는 닫을 때 묻지 않고 저장해요. 저장한 뒤 뜨는 '다시 묻기'를 누르면 다시 물어봐요"]}, {"v": "v1.24", "d": "2026.11.20", "items": ["💾 글을 적던 창을 × 나 뒤로 가기로 닫으면 '저장할까요?'라고 물어봐요. '저장'·'저장 안 함'·'계속 적기' 중에 골라 주세요"]}, {"v": "v1.23", "d": "2026.11.20", "items": ["✋ 글을 적던 창의 바깥을 실수로 눌러도 창이 닫히지 않아요. 적던 내용이 사라지지 않게 '입력한 내용이 있어요'라고 알려 드려요. 닫으려면 × 버튼을 눌러 주세요"]}, {"v": "v1.22", "d": "2026.11.20", "items": ["💬 창이 열려 있을 때는 알림이 화면 위쪽에 떠서 창의 버튼을 가리지 않아요"]}, {"v": "v1.21", "d": "2026.11.15", "items": ["✏️ 문구 다듬기: '지금 출발하세요'·'확인하세요'처럼 시키는 말을 '지금 출발해요'·'확인해 주세요'로 부드럽게 바꾸고, 띄어쓰기(알려 드려요)를 맞췄어요. 비밀번호·저장 공간 안내를 다른 앱과 같은 말로 맞추고, '내 데이터 백업'을 '내 기록 백업'으로 바꿨어요"]}, {"v": "v1.20", "d": "2026.11.13", "items": ["✍️ 첫 화면 아래에 '직접 입력' 버튼이 늘 있어요. 항공권을 넣은 뒤에도 바로 다음 항공편을 넣을 수 있어요", "📅 직접 입력할 때 날짜가 미리 채워져 있지 않아요. 날짜를 꼭 골라 주세요", "⚠️ 도착 시각이 출발보다 일러서 비행시간이 아주 길어지면(예: 22시간) 저장 전에 한 번 더 물어봐요", "🗂 항공권을 여러 개 넣어도 첫 화면에는 가장 가까운 여행이 나와요. 방금 넣은 여행은 알림의 '보기'로 바로 볼 수 있어요", "🛫 오늘 이미 출발한 여행은 첫 화면과 목록 모두 '여행 중'으로 같게 보여요. 지난 여행에는 공항 이동·실시간 안내를 보여 주지 않아요", "🔎 찾는 중에는 찾은 개수만 보여 주고, '지난 여행 모두 지우기'는 숨겨요", "🔒 백업 비밀번호는 8글자 이상으로 바뀌었어요. 숫자만 쓰면 한 번 더 알려 드려요. 전에 만든 백업은 그대로 열려요", "🛡 보안: 앱 밖으로 여는 주소를 지도·플레이 스토어·이 앱 저장소·정부 입국 사이트로 더 좁혔어요", "앱 저장 공간이 가득 차서 저장하지 못하면 다시 알려 드려요. 정보 창 글이 단어 중간에서 끊기지 않게, '화면 밝기'는 '화면 색'으로 이름을 바꿨어요"]}, {"v": "v1.19", "d": "2026.11.13", "items": ["🔒 백업 비밀번호: 백업 파일에 예약번호·여권 만료일·탑승권 사진이 들어 있어서, 비밀번호(6글자 이상)를 넣으면 잠가서 저장해요", "🗂 내 항공권 목록을 날짜순으로, '다가오는 여행'과 '지난 여행'으로 나눠 보여요. 연도와 편명도 같이 나오고, 지난 여행은 한 번에 지울 수 있어요", "🔎 내 항공권 찾기: 편명·공항·도시·이름·예약번호로 찾아요 (여러 낱말을 띄어 쓰면 모두 들어간 것만)", "✍️ 직접 입력할 때 전에 넣은 편명이면 공항·시각·터미널을 저절로 채워요", "⚠️ 지난 날짜, 출발과 도착이 같은 공항, 출발보다 이른 도착 시각은 저장 전에 한 번 더 알려 드려요. 끝난 여행은 '지난 여행'으로 표시해요", "↩️ 항공권·구간을 지운 뒤 6초 안에 '되돌리기'를 누르면 원래대로 돌아와요", "🔠 글자 크기(보통·크게·아주 크게)와 화면 밝기(폰 설정대로·밝게·어둡게)를 '내 항공권' 아래에서 골라요", "📶 아이폰 웹앱을 한 번 열면 공항·비행기 안처럼 인터넷이 없어도 열려요", "💾 폰 저장 공간이 부족해 저장하지 못하면 알려 드려요", "🛡 보안: 바깥 글꼴(구글)을 쓰지 않고, 앱 화면이 정해 둔 곳에만 연결해요. 폰 자동 백업에서 항공권 기록을 빼고, 바깥 링크는 안전한 주소만 열어요", "작은 버튼(고치기·실시간 운항·예시 닫기·버전)을 누르기 쉽게 키우고, 흐린 회색 글자를 더 진하게 했어요"]}, {"v": "v1.18", "d": "2026.11.12", "items": ["📱 아이폰에서도 쓸 수 있어요: 다운로드 페이지의 '아이폰·PC에서는 웹으로 쓰기'로 열고 홈 화면에 추가하면 돼요", "🇪🇺 유럽 ETIAS 안내를 최신으로: 아직 시행 전이고 시작 날짜가 정해지지 않았어요"]}, {"v": "v1.17", "d": "2026.11.08", "items": ["🕐 시차·현지 시간: 현지 시각과 한국 시각을 나란히, 시차 적응 팁과 비행기에서 잘지 말지, 한국 가족에게 연락하기 좋은 시간", "📝 공항 메모: 라운지·흡연실·약국 위치를 공항마다 적어 두면 다음 여행과 환승 안내에도 그대로", "🔌 입국 준비의 멀티 어댑터에 나라별 콘센트 모양과 전압(일본 100V 등)을 같이 알려 드려요", "🗣️ 이음으로 그 나라 말 준비: 버튼 한 번에 번역기 이음이 다음 여행 나라 말로 열려요"]}, {"v": "v1.16", "d": "2026.11.05", "items": ["보안 강화: 앱 화면이 허락된 곳 말고는 스크립트를 불러오지 못하게 막고, 폰의 다른 파일을 읽지 못하게 하고, 업데이트 파일은 이 앱 저장소 주소에서만 받아요", "알림 보안: 다른 앱이 Aero 이름으로 가짜 알림을 띄우지 못하게 막았어요"]}, {"v": "v1.15", "d": "2026.11.05", "items": ["입국 준비에 「내 짐」: 충전기·상비약 같은 준비물을 한 번 넣으면 다음 여행에도 그대로, 자주 쓰는 준비물은 눌러서 바로 추가", "출발 전날 밤 9시 알림에 남은 준비물 개수도 알려 드려요"]}, {"v": "v1.14", "d": "2026.11.05", "items": ["귀국 준비에 면세 한도 계산기: 산 물건 금액을 넣으면 1인 800달러를 넘는지 바로 알려 드려요", "왼쪽 아래 버전 → 내 기록 백업: 기록을 파일로 저장했다가 새 폰에서 불러오기"]}, {"v": "v1.13", "d": "2026.11.01", "items": ["오는 편(한국 도착)에도 '귀국 준비' 체크리스트: 면세 한도, 세관 신고, Q-CODE, 반입 금지 식품"]}, {"v": "v1.12", "d": "2026.11.01", "items": ["환승 시간이 짧으면 빨간 경고와 함께, 다음 편을 놓쳤을 때 할 일을 알려 드려요", "귀국편까지 넣으면 한 여행으로 묶여 날짜별 전체 일정(몇 박 며칠, 어디서 몇 박)을 보여 드려요"]}, {"v": "v1.11", "d": "2026.11.01", "items": ["구간마다 탑승권을 따로 찍거나 직접 넣어도, 이어지는 환승편은 한 여정으로 묶여 환승 안내가 나와요", "작은 화면에서 아래 버튼 글자가 두 줄로 깨지지 않게 고쳤어요"]}, {"v": "v1.10", "d": "2026.11.01", "items": ["보안: 앱 안에서는 바깥 스크립트를 불러오는 길을 완전히 막았어요"]}, {"v": "v1.9", "d": "2026.11.01", "items": ["왼쪽 아래 버전을 누르면 앱 정보·업데이트 내용·개인정보를 볼 수 있어요", "새 버전이 나오면 버전 글씨가 노란색으로 바뀌어요"]}, {"v": "v1.8", "d": "2026.11.01", "items": ["쓰이지 않던 AI 연결 코드를 완전히 지웠어요", "처음 설치하면 빈 화면에서 시작해요"]}, {"v": "v1.7", "d": "2026.11.01", "items": ["알림 숫자는 내가 넣은 항공권만 세요", "예시는 '예시로 둘러보기'에서만 보이고 저장되지 않아요"]}, {"v": "v1.6", "d": "2026.11.01", "items": ["항공권 사진·캡처·PDF를 폰 안에서 읽어요 (탑승권 바코드 + 글자 인식)", "공항으로 나갈 시각과 출발 알림 3번", "홈 화면 위젯, 휴대폰 알람 맞추기", "탑승권 크게 보기, 일행 탑승권 묶기"]}], "privacy": "항공권 사진과 정보는 이 폰에만 저장돼요. 바코드·글자 인식은 폰 안에서 해요. 인터넷은 새 버전 확인(GitHub), 도착지 날씨(Open-Meteo, 공항 위치만 보냄), 면세 계산기 환율(open.er-api.com), 인천공항 실시간 정보(직접 켰을 때, 공공데이터포털), 지도·길찾기를 열 때만 써요. 항공권 정보는 어디에도 보내지 않아요.", "backup": {"keys": ["chalkak.v1"], "idb": [{"db": "chalkak", "store": "img"}], "bridge": "TicketNative"}};
+window.APP_INFO={"name": "Aero", "repo": "mini-2026/aero", "mount": "#ver", "notes": [{"v": "current", "d": "2026.11.26", "items": ["↩️ '이 구간 지우기' 뒤 '되돌리기'를 누르면 구간이 제대로 돌아와요. 메모·내 짐·면세 계산기 물건을 지울 때도 6초 안에 되돌릴 수 있고, '모두 지우기'는 한 번 더 눌러야 지워져요", "🎫 탑승권 보기에서 잘못 찍은 탑승권만 따로 지울 수 있어요", "✏️ 항공편 날짜·편명을 고쳐도 '공항까지 이동' 같은 설정과 탑승권이 그대로 남아요", "🛡 망가진 백업 파일을 불러와도 앱이 하얀 화면으로 멈추지 않아요. 인천공항 인증키는 백업 파일에 넣지 않아요", "📱 아이폰(웹)에서도 PDF와 탑승권 바코드를 읽을 수 있게 고쳤어요", "🔠 작은 글씨와 버튼을 키워서 더 잘 보이고 누르기 쉬워졌어요", "적던 창을 Esc 키로 닫을 때도 저장할지 물어봐요. 항공권이 많아도 '내 항공권'이 빨리 열려요. 지난 여행에는 택시 카드·알림 버튼을 숨겨요"]}, {"v": "v1.26", "d": "2026.11.20", "items": ["📝 적던 글 지키기: 글을 적다가 앱이 꺼져도 사라지지 않아요. 다시 열어 같은 칸을 열면 적던 글이 그대로 이어져요 (필요 없으면 '버리기'를 눌러 주세요)"]}, {"v": "v1.25", "d": "2026.11.20", "items": ["💾 '저장할까요?' 창에서 '다음부터 묻지 않고 바로 저장'을 누르면, 다음부터는 닫을 때 묻지 않고 저장해요. 저장한 뒤 뜨는 '다시 묻기'를 누르면 다시 물어봐요"]}, {"v": "v1.24", "d": "2026.11.20", "items": ["💾 글을 적던 창을 × 나 뒤로 가기로 닫으면 '저장할까요?'라고 물어봐요. '저장'·'저장 안 함'·'계속 적기' 중에 골라 주세요"]}, {"v": "v1.23", "d": "2026.11.20", "items": ["✋ 글을 적던 창의 바깥을 실수로 눌러도 창이 닫히지 않아요. 적던 내용이 사라지지 않게 '입력한 내용이 있어요'라고 알려 드려요. 닫으려면 × 버튼을 눌러 주세요"]}, {"v": "v1.22", "d": "2026.11.20", "items": ["💬 창이 열려 있을 때는 알림이 화면 위쪽에 떠서 창의 버튼을 가리지 않아요"]}, {"v": "v1.21", "d": "2026.11.15", "items": ["✏️ 문구 다듬기: '지금 출발하세요'·'확인하세요'처럼 시키는 말을 '지금 출발해요'·'확인해 주세요'로 부드럽게 바꾸고, 띄어쓰기(알려 드려요)를 맞췄어요. 비밀번호·저장 공간 안내를 다른 앱과 같은 말로 맞추고, '내 데이터 백업'을 '내 기록 백업'으로 바꿨어요"]}, {"v": "v1.20", "d": "2026.11.13", "items": ["✍️ 첫 화면 아래에 '직접 입력' 버튼이 늘 있어요. 항공권을 넣은 뒤에도 바로 다음 항공편을 넣을 수 있어요", "📅 직접 입력할 때 날짜가 미리 채워져 있지 않아요. 날짜를 꼭 골라 주세요", "⚠️ 도착 시각이 출발보다 일러서 비행시간이 아주 길어지면(예: 22시간) 저장 전에 한 번 더 물어봐요", "🗂 항공권을 여러 개 넣어도 첫 화면에는 가장 가까운 여행이 나와요. 방금 넣은 여행은 알림의 '보기'로 바로 볼 수 있어요", "🛫 오늘 이미 출발한 여행은 첫 화면과 목록 모두 '여행 중'으로 같게 보여요. 지난 여행에는 공항 이동·실시간 안내를 보여 주지 않아요", "🔎 찾는 중에는 찾은 개수만 보여 주고, '지난 여행 모두 지우기'는 숨겨요", "🔒 백업 비밀번호는 8글자 이상으로 바뀌었어요. 숫자만 쓰면 한 번 더 알려 드려요. 전에 만든 백업은 그대로 열려요", "🛡 보안: 앱 밖으로 여는 주소를 지도·플레이 스토어·이 앱 저장소·정부 입국 사이트로 더 좁혔어요", "앱 저장 공간이 가득 차서 저장하지 못하면 다시 알려 드려요. 정보 창 글이 단어 중간에서 끊기지 않게, '화면 밝기'는 '화면 색'으로 이름을 바꿨어요"]}, {"v": "v1.19", "d": "2026.11.13", "items": ["🔒 백업 비밀번호: 백업 파일에 예약번호·여권 만료일·탑승권 사진이 들어 있어서, 비밀번호(6글자 이상)를 넣으면 잠가서 저장해요", "🗂 내 항공권 목록을 날짜순으로, '다가오는 여행'과 '지난 여행'으로 나눠 보여요. 연도와 편명도 같이 나오고, 지난 여행은 한 번에 지울 수 있어요", "🔎 내 항공권 찾기: 편명·공항·도시·이름·예약번호로 찾아요 (여러 낱말을 띄어 쓰면 모두 들어간 것만)", "✍️ 직접 입력할 때 전에 넣은 편명이면 공항·시각·터미널을 저절로 채워요", "⚠️ 지난 날짜, 출발과 도착이 같은 공항, 출발보다 이른 도착 시각은 저장 전에 한 번 더 알려 드려요. 끝난 여행은 '지난 여행'으로 표시해요", "↩️ 항공권·구간을 지운 뒤 6초 안에 '되돌리기'를 누르면 원래대로 돌아와요", "🔠 글자 크기(보통·크게·아주 크게)와 화면 밝기(폰 설정대로·밝게·어둡게)를 '내 항공권' 아래에서 골라요", "📶 아이폰 웹앱을 한 번 열면 공항·비행기 안처럼 인터넷이 없어도 열려요", "💾 폰 저장 공간이 부족해 저장하지 못하면 알려 드려요", "🛡 보안: 바깥 글꼴(구글)을 쓰지 않고, 앱 화면이 정해 둔 곳에만 연결해요. 폰 자동 백업에서 항공권 기록을 빼고, 바깥 링크는 안전한 주소만 열어요", "작은 버튼(고치기·실시간 운항·예시 닫기·버전)을 누르기 쉽게 키우고, 흐린 회색 글자를 더 진하게 했어요"]}, {"v": "v1.18", "d": "2026.11.12", "items": ["📱 아이폰에서도 쓸 수 있어요: 다운로드 페이지의 '아이폰·웹에서 열기'로 열고 홈 화면에 추가하면 돼요", "🇪🇺 유럽 ETIAS 안내를 최신으로: 아직 시행 전이고 시작 날짜가 정해지지 않았어요"]}, {"v": "v1.17", "d": "2026.11.08", "items": ["🕐 시차·현지 시간: 현지 시각과 한국 시각을 나란히, 시차 적응 팁과 비행기에서 잘지 말지, 한국 가족에게 연락하기 좋은 시간", "📝 공항 메모: 라운지·흡연실·약국 위치를 공항마다 적어 두면 다음 여행과 환승 안내에도 그대로", "🔌 입국 준비의 멀티 어댑터에 나라별 콘센트 모양과 전압(일본 100V 등)을 같이 알려 드려요", "🗣️ 이음으로 그 나라 말 준비: 버튼 한 번에 번역기 이음이 다음 여행 나라 말로 열려요"]}, {"v": "v1.16", "d": "2026.11.05", "items": ["보안 강화: 앱 화면이 허락된 곳 말고는 스크립트를 불러오지 못하게 막고, 폰의 다른 파일을 읽지 못하게 하고, 업데이트 파일은 이 앱 저장소 주소에서만 받아요", "알림 보안: 다른 앱이 Aero 이름으로 가짜 알림을 띄우지 못하게 막았어요"]}, {"v": "v1.15", "d": "2026.11.05", "items": ["입국 준비에 「내 짐」: 충전기·상비약 같은 준비물을 한 번 넣으면 다음 여행에도 그대로, 자주 쓰는 준비물은 눌러서 바로 추가", "출발 전날 밤 9시 알림에 남은 준비물 개수도 알려 드려요"]}, {"v": "v1.14", "d": "2026.11.05", "items": ["귀국 준비에 면세 한도 계산기: 산 물건 금액을 넣으면 1인 800달러를 넘는지 바로 알려 드려요", "왼쪽 아래 버전 → 내 기록 백업: 기록을 파일로 저장했다가 새 폰에서 불러오기"]}, {"v": "v1.13", "d": "2026.11.01", "items": ["오는 편(한국 도착)에도 '귀국 준비' 체크리스트: 면세 한도, 세관 신고, Q-CODE, 반입 금지 식품"]}, {"v": "v1.12", "d": "2026.11.01", "items": ["환승 시간이 짧으면 빨간 경고와 함께, 다음 편을 놓쳤을 때 할 일을 알려 드려요", "귀국편까지 넣으면 한 여행으로 묶여 날짜별 전체 일정(몇 박 며칠, 어디서 몇 박)을 보여 드려요"]}, {"v": "v1.11", "d": "2026.11.01", "items": ["구간마다 탑승권을 따로 찍거나 직접 넣어도, 이어지는 환승편은 한 여정으로 묶여 환승 안내가 나와요", "작은 화면에서 아래 버튼 글자가 두 줄로 깨지지 않게 고쳤어요"]}, {"v": "v1.10", "d": "2026.11.01", "items": ["보안: 앱 안에서는 바깥 스크립트를 불러오는 길을 완전히 막았어요"]}, {"v": "v1.9", "d": "2026.11.01", "items": ["왼쪽 아래 버전을 누르면 앱 정보·업데이트 내용·개인정보를 볼 수 있어요", "새 버전이 나오면 버전 글씨가 노란색으로 바뀌어요"]}, {"v": "v1.8", "d": "2026.11.01", "items": ["쓰이지 않던 AI 연결 코드를 완전히 지웠어요", "처음 설치하면 빈 화면에서 시작해요"]}, {"v": "v1.7", "d": "2026.11.01", "items": ["알림 숫자는 내가 넣은 항공권만 세요", "예시는 '예시로 둘러보기'에서만 보이고 저장되지 않아요"]}, {"v": "v1.6", "d": "2026.11.01", "items": ["항공권 사진·캡처·PDF를 폰 안에서 읽어요 (탑승권 바코드 + 글자 인식)", "공항으로 나갈 시각과 출발 알림 3번", "홈 화면 위젯, 휴대폰 알람 맞추기", "탑승권 크게 보기, 일행 탑승권 묶기"]}], "privacy": "항공권 사진과 정보는 이 폰에만 저장돼요. 바코드·글자 인식은 폰 안에서 해요. 인터넷은 새 버전 확인(GitHub), 도착지 날씨(Open-Meteo, 공항 위치만 보내요), 면세 계산기 환율(open.er-api.com), 인천공항 실시간 정보(직접 켰을 때만, 공공데이터포털에 편명만 보내요), 지도·길찾기를 열 때만 써요. 이름·예약번호·좌석은 어디에도 보내지 않아요. 안드로이드 앱의 Google 글자 인식 부품은 익명 사용 기록을 Google에 보낼 수 있어요(항공권 내용은 보내지 않아요).", "backup": {"keys": ["chalkak.v1"], "strip": {"chalkak.v1": ["icnKey"]}, "idb": [{"db": "chalkak", "store": "img"}], "bridge": "TicketNative"}};
 window.APP_INFO.online=!!window.TicketNative;window.APP_INFO.web=!window.TicketNative&&location.protocol==='https:';
 window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만 정해요
 </script>
@@ -2313,12 +2352,12 @@ window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만
     '.scrim{position:absolute;inset:0;background:rgba(10,15,20,.45)}' +
     '.sheet{position:relative;width:100%;max-width:520px;max-height:88%;overflow-y:auto;background:var(--bg);border-radius:24px 24px 0 0;box-shadow:0 -8px 30px rgba(0,0,0,.18);' +
     'padding:10px max(20px,env(safe-area-inset-right,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));box-sizing:border-box}' +
-    '.grab{width:44px;height:5px;border-radius:9px;background:var(--line);margin:2px auto 14px}' +
+    '.grab{width:48px;height:5px;border-radius:9px;background:var(--line);margin:2px auto 14px}' +
     '.head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}' +
     'h2{margin:6px 0 0;font-size:24px;font-weight:800;letter-spacing:-.01em}' +
     '.vtag{display:inline-block;margin-left:10px;padding:3px 10px;border-radius:999px;background:var(--pill);color:var(--pillInk);font:700 15px ui-monospace,Menlo,monospace;vertical-align:4px}' +
     '.vtag.up{background:rgba(245,180,0,.18);color:var(--yellow)}' +
-    '.x{border:0;background:transparent;color:var(--ink2);font-size:30px;line-height:1;width:44px;height:44px;border-radius:12px;cursor:pointer}' +
+    '.x{border:0;background:transparent;color:var(--ink2);font-size:30px;line-height:1;width:48px;height:48px;border-radius:12px;cursor:pointer}' +
     '.msg{margin:6px 0 14px;color:var(--ink2)}.msg b{color:var(--yellow)}' +
     '.row{display:flex;gap:8px;flex-wrap:wrap}' +
     '.btn{appearance:none;border:1px solid var(--line);background:var(--btn);color:var(--ink);border-radius:14px;padding:12px 18px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}' +
@@ -2327,10 +2366,10 @@ window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만
     '.lbl{margin:22px 0 4px;font-size:15px;font-weight:800;color:var(--ink2)}' +
     'ul.notes{list-style:none;margin:0;padding:0}' +
     'ul.notes>li{padding:12px 0;border-bottom:1px solid var(--line)}ul.notes>li:last-child{border-bottom:0}' +
-    '.nh{display:flex;align-items:baseline;gap:10px}.nh b{font:800 16px ui-monospace,Menlo,monospace}.nh span{color:var(--ink3);font-size:14px}' +
+    '.nh{display:flex;align-items:baseline;gap:10px}.nh b{font:800 16px ui-monospace,Menlo,monospace}.nh span{color:var(--ink2);font-size:14px}' +
     'ul.notes ul{margin:6px 0 0;padding-left:20px;list-style:circle;color:var(--ink2)}ul.notes ul li{margin:2px 0}' +
     '.hint{margin:0;color:var(--ink2)}' +
-    '.pw{display:block;width:100%;box-sizing:border-box;min-height:46px;margin:0 0 4px;border:1px solid var(--line);background:var(--btn);color:var(--ink);border-radius:12px;padding:10px 12px;font:inherit;font-size:16px}.row .pw{flex:1 1 160px;width:auto;margin:0}' +
+    '.pw{display:block;width:100%;box-sizing:border-box;min-height:48px;margin:0 0 4px;border:1px solid var(--line);background:var(--btn);color:var(--ink);border-radius:12px;padding:10px 12px;font:inherit;font-size:16px}.row .pw{flex:1 1 160px;width:auto;margin:0}' +
     '.w.dk{--bg:#18212b;--ink:#e8edf2;--ink2:#b3bec9;--ink3:#8a96a3;--line:#2b3744;--pill:#173a2c;--pillInk:#7fd3ac;--btn:#222d38;--main:#e8edf2;--mainInk:#101820}' +
     'button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}';
   var isOpen = false;
@@ -2422,7 +2461,7 @@ window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만
     if (pw && /^\d+$/.test(pw) && bk.numOk !== pw) { bk.numOk = pw; bkSet('숫자만 쓴 비밀번호는 알아내기 쉬워요. 글자를 섞어 주세요. 그래도 쓰려면 "백업 파일로 저장"을 한 번 더 눌러 주세요.'); return; }
     bk.numOk = '';
     bkSet(pw ? '비밀번호로 잠근 백업 파일을 만드는 중이에요…' : '백업 파일을 만드는 중이에요…', true);
-    var ls = {}; lsKeys().forEach(function (k) { ls[k] = localStorage.getItem(k); });
+    var ls = {}; lsKeys().forEach(function (k) { ls[k] = stripOut(k, localStorage.getItem(k)); });
     Promise.all((B.idb || []).map(idbDump)).then(function (dumps) {
       var idb = {}; (B.idb || []).forEach(function (d, i) { idb[d.db + '/' + d.store] = dumps[i]; });
       var text = JSON.stringify({ app: C.name, repo: C.repo, version: cur(), at: new Date().toISOString(), ls: ls, idb: idb });
@@ -2465,13 +2504,17 @@ window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만
     bkSet('여는 중이에요…', true);
     BLOCK.open(o.lock, pw).then(function (plain) { bk.locked = null; bkOpened(plain); }, function () { bkSet('비밀번호가 맞지 않아요.'); });
   }
+  /* 백업에 넣지 않을 칸 (APP_INFO.backup.strip = {키: ['칸 이름']}) — 인증키 같은 비밀값은 파일로 나가지 않게 */
+  function stripOut(k, v) { var f = (B.strip || {})[k]; if (!f || typeof v !== 'string') return v; try { var o = JSON.parse(v); if (o && typeof o === 'object') { f.forEach(function (n) { delete o[n]; }); return JSON.stringify(o); } } catch (e) { /* 무시 */ } return v; }
+  /* 불러올 때는 지금 폰에 있던 그 칸 값을 그대로 둠 */
+  function keepIn(k, v, old) { var f = (B.strip || {})[k]; if (!f || typeof v !== 'string' || typeof old !== 'string') return v; try { var o = JSON.parse(v), p = JSON.parse(old); if (o && p && typeof o === 'object') { f.forEach(function (n) { if (p[n] !== undefined) o[n] = p[n]; else delete o[n]; }); return JSON.stringify(o); } } catch (e) { /* 무시 */ } return v; }
   var bkMatch = function (k) { return (B.keys || []).some(function (p) { return k === p || (p.slice(-1) === '*' && String(k).indexOf(p.slice(0, -1)) === 0); }); };
   function bkApply() {
     var o = bk.pending; if (!o) return; bkSet('불러오는 중이에요…', true);
     var SP = Storage.prototype, set0 = SP.setItem, rm0 = SP.removeItem, old = {};
     lsKeys().forEach(function (k) { old[k] = localStorage.getItem(k); });
     try { lsKeys().forEach(function (k) { rm0.call(localStorage, k); });
-      Object.keys(o.ls).forEach(function (k) { if (typeof o.ls[k] === 'string' && bkMatch(k)) set0.call(localStorage, k, o.ls[k]); });
+      Object.keys(o.ls).forEach(function (k) { if (typeof o.ls[k] === 'string' && bkMatch(k)) set0.call(localStorage, k, keepIn(k, o.ls[k], old[k])); });
     } catch (e) {
       try { lsKeys().forEach(function (k) { rm0.call(localStorage, k); }); Object.keys(old).forEach(function (k) { set0.call(localStorage, k, old[k]); }); } catch (e2) { /* 무시 */ }
       bk.pending = null; bkSet('앱 저장 공간이 가득 차서 불러오지 못했어요. 원래 기록은 그대로예요.'); return;
@@ -2490,8 +2533,8 @@ window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만
       (p ? '<p class="hint">' + esc((when && !isNaN(when) ? (when.getMonth() + 1) + '월 ' + when.getDate() + '일 ' : '') + '백업 (v' + (p.version || '?') + (p.cnt ? ' · ' + p.cnt : '') + ')') + '을 불러오면 지금 이 폰의 ' + esc(C.name) + ' 기록이 백업 내용으로 바뀌어요.</p>' +
         '<div class="row"><button class="btn main" type="button" data-bk="apply"' + (bk.busy ? ' disabled' : '') + '>불러오기</button><button class="btn" type="button" data-bk="cancel">취소</button></div>'
       : bk.locked ? '<p class="hint">🔒 비밀번호가 걸린 백업이에요. 저장할 때 넣은 비밀번호를 넣어 주세요.</p><input class="pw" id="bk-upw" type="password" autocomplete="off" maxlength="64" placeholder="백업 비밀번호" aria-label="백업 비밀번호"><div class="row" style="margin-top:8px"><button class="btn main" type="button" data-bk="unlock"' + (bk.busy ? ' disabled' : '') + '>열기</button><button class="btn" type="button" data-bk="cancel">취소</button></div>'
-      : '<p class="hint">폰을 바꾸거나 앱을 지우기 전에 파일로 저장해 두면 좋아요. 파일은 내가 고른 곳에만 저장되고 인터넷으로 보내지 않아요. 예약번호·여권 만료일·탑승권 사진이 들어 있으니 비밀번호로 잠그는 걸 권해요.</p>' +
-        (BLOCK.ok() ? '<input class="pw" id="bk-pw" type="password" autocomplete="new-password" maxlength="64" placeholder="비밀번호 (선택, ' + PW_MIN + '글자 이상)" aria-label="백업 비밀번호 (선택, ' + PW_MIN + '글자 이상)"><p class="hint" style="font-size:13px;margin:4px 0 8px">비밀번호를 잊으면 백업을 열 수 없어요.</p>' : '') +
+      : '<p class="hint">폰을 바꾸거나 앱을 지우기 전에 파일로 저장해 두면 좋아요. 파일은 내가 고른 곳에만 저장되고 인터넷으로 보내지 않아요. 이름·예약번호·여권 만료일·탑승권 사진이 들어 있으니 비밀번호로 잠그는 걸 권해요. 인천공항 인증키는 백업에 넣지 않아요.</p>' +
+        (BLOCK.ok() ? '<input class="pw" id="bk-pw" type="password" autocomplete="new-password" maxlength="64" placeholder="비밀번호 (선택, ' + PW_MIN + '글자 이상)" aria-label="백업 비밀번호 (선택, ' + PW_MIN + '글자 이상)"><p class="hint" style="font-size:14px;margin:4px 0 8px">비밀번호를 잊으면 백업을 열 수 없어요.</p>' : '') +
         '<div class="row"><button class="btn" type="button" data-bk="save"' + (bk.busy ? ' disabled' : '') + '>백업 파일로 저장</button><button class="btn" type="button" data-bk="open"' + (bk.busy ? ' disabled' : '') + '>백업 불러오기</button></div>') +
       (bk.msg ? '<p class="hint" role="status">' + esc(bk.msg) + '</p>' : '');
   }
@@ -2615,7 +2658,7 @@ window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만
     var sp = document.createElement('span'); sp.textContent = msg; sp.style.flex = '1'; tw.appendChild(sp);
     if (btn) {
       var b = document.createElement('button'); b.type = 'button'; b.textContent = btn;
-      b.style.cssText = 'flex:none;border:0;border-radius:10px;padding:8px 12px;background:rgba(255,255,255,.16);color:#fff;font:inherit;font-weight:700;min-height:36px';
+      b.style.cssText = 'flex:none;border:0;border-radius:10px;padding:8px 12px;background:rgba(255,255,255,.16);color:#fff;font:inherit;font-weight:700;min-height:48px';
       b.onclick = function () { fn(); if (tw && tw.parentNode) tw.parentNode.removeChild(tw); };
       tw.appendChild(b);
     }

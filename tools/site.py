@@ -1,5 +1,5 @@
 """Builds the download page (site/index.html) and the web app copy from android/assets."""
-import json, re, os, shutil, html, sys
+import json, re, os, shutil, html, sys, hashlib, base64, io, tarfile, urllib.request
 
 about = json.load(open('site/about.json', encoding='utf-8'))
 repo = os.environ['REPO']            # owner/name
@@ -13,6 +13,50 @@ src = 'android/' + about.get('webroot', 'assets')
 if about.get('web'):
     shutil.copytree(src, os.path.join(out, 'app'),
                     ignore=shutil.ignore_patterns('dexopt', '*.prof', '*.profm', 'capacitor*.json', 'native-bridge.js'))
+
+_got = {}
+def fetch(url):
+    if url not in _got:
+        with urllib.request.urlopen(url, timeout=60) as r:
+            _got[url] = r.read()
+    return _got[url]
+
+def add_libs():
+    """Web-only parts (about.json "lib"): download pinned files, check sha256, copy to app/lib/. Never ship a file that does not match."""
+    for x in about.get('lib', []):
+        dst = os.path.join(out, 'app', 'lib', x['as'])
+        try:
+            data = fetch(x['url'])
+            if x.get('sha512'):  # npm tarball: check the registry integrity first
+                if 'sha512-' + base64.b64encode(hashlib.sha512(data).digest()).decode() != x['sha512']:
+                    raise ValueError('tarball sha512 mismatch')
+            if x.get('member'):
+                data = tarfile.open(fileobj=io.BytesIO(data), mode='r:gz').extractfile(x['member']).read()
+            got = hashlib.sha256(data).hexdigest()
+            if got != x['sha256']:
+                raise ValueError('sha256 mismatch ' + got)
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            open(dst, 'wb').write(data)
+            print('lib ok', x['as'], got)
+        except Exception as err:
+            print(f'::warning::lib {x["as"]} skipped: {err}')
+
+def app_privacy():
+    """Use the same privacy text as the in-app info window (window.APP_INFO.privacy)."""
+    for root, _, files in os.walk(src):
+        for f in files:
+            if f.endswith(('.html', '.js')):
+                s = open(os.path.join(root, f), encoding='utf-8', errors='ignore').read()
+                m = re.search(r'window\.APP_INFO\s*=\s*', s)
+                if m:
+                    try:
+                        return json.JSONDecoder().raw_decode(s[m.end():])[0].get('privacy')
+                    except Exception:
+                        pass
+    return None
+
+if about.get('web'):
+    add_libs()
 
 def find_notes():
     pat = re.compile(r'(?:"notes"\s*:|\bnotes\s*:|\bNOTES\s*=)\s*\[')
@@ -66,6 +110,7 @@ upd = ''.join(
     + ''.join(f'<li>{e(str(i))}</li>' for i in (n.get('items') or [])) + '</ul></div>'
     for n in notes) or '<p>업데이트 내용은 앱 안 왼쪽 아래 버전을 눌러 볼 수 있어요.</p>'
 web = (f'<a class="b2" href="app/">📱 아이폰·웹에서 열기</a>' if about.get('web') else '')
+privacy = about.get('privacy') or app_privacy() or '입력한 내용은 내 휴대폰에만 저장돼요.'
 
 page = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -83,10 +128,10 @@ h2{{font-size:18px;margin:0 0 8px}}ul{{margin:4px 0;padding-left:20px}}.n{{borde
 <section><h2>이런 앱이에요</h2><ul>{intro}</ul></section>
 <section class="w"><h2>설치 방법</h2><ul>
 <li>받은 파일을 눌러 설치해요. "출처를 알 수 없는 앱" 안내가 나오면 허용해 주세요.</li>
-<li>예전 주소에서 받은 앱이 있으면, 앱 안에서 백업을 먼저 하고 지운 뒤 설치해 주세요. 설치한 다음 백업을 불러오면 돼요.</li>
+<li>예전에 다른 다운로드 페이지에서 받은 {e(about["name"])} 앱이 있으면 업데이트 설치가 안 돼요. 앱 안에서 백업을 먼저 하고 지운 뒤 설치해 주세요. 설치한 다음 백업을 불러오면 돼요.</li>
 <li>설치한 뒤에는 앱 안에서 새 버전을 알려 드려요.</li></ul></section>
 <section id="updates"><h2>업데이트 내용</h2>{upd}</section>
-<section><h2>개인정보</h2><ul><li>입력한 내용은 내 휴대폰에만 저장돼요. 따로 모으거나 보내지 않아요.</li></ul></section>
+<section><h2>개인정보</h2><ul><li>{e(privacy)}</li></ul></section>
 </main></body></html>'''
 open(os.path.join(out, 'index.html'), 'w', encoding='utf-8').write(page)
 # old in-app links (guide.html etc.) land on the download page
