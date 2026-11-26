@@ -332,6 +332,9 @@ nav.bar .btn{flex:1 1 auto;min-width:0;justify-content:center}
 .df-sum.ok{background:var(--paper-2)}.df-sum.over{background:#FDECEA;color:#8A1C12}.df-sum span{font-size:14px}
 .df-list{list-style:none;margin:0;padding:0}.df-list li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--rule);font-size:14px}
 .df-list small{color:var(--ink-2)}
+.ie{display:flex;align-items:center;flex:1;min-width:0;min-height:48px;margin:-12px 0;padding:0;border:0;background:none;color:inherit;font:inherit;font-size:14px;font-weight:700;text-align:left;cursor:text;overflow-wrap:anywhere}.df-list .ie{margin:0;font-weight:600}
+.ie-in{flex:1;min-width:0;width:100%;box-sizing:border-box;height:48px;margin:-12px 0;padding:0 12px;border:2px solid var(--ink);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:16px}.df-list .ie-in{margin:0}
+.ie-tip{margin:6px 0 0;font-size:14px;color:var(--ink-2)}
 .df-add{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .df-add input{flex:1 1 120px;min-width:0;border:1px solid var(--rule);background:var(--paper);border-radius:10px;padding:8px 10px;min-height:48px;color:var(--ink);font-size:16px}
 .seg{display:flex;gap:4px;flex:1 1 100%}.seg-b{flex:1;min-height:48px;border:1px solid var(--rule);background:var(--paper);border-radius:10px;color:var(--ink);font-weight:700}
@@ -405,7 +408,7 @@ nav.bar .btn{flex:1 1 auto;min-width:0;justify-content:center}
 
 <script>
 'use strict';
-const APP_VERSION = '1.26';
+const APP_VERSION = '1.28';
 const NATIVE = window.TicketNative || null;            // APK bridge: photo text, GPS, alerts, widget, share, brightness
 const HOME_TZ = 'Asia/Seoul';
 // 웹앱에서만 쓰는 부품: 바깥 CDN이 아니라 같은 사이트(lib/)에 둔 파일 (빌드 때 tools/site.py가 받아 sha256 확인, site/about.json의 lib)
@@ -1442,7 +1445,7 @@ function aptNotesView(t, j){
 function aptNotesSheet(code, prefill){
   const list = notesOf(code), ex = list.length ? '' : '<p class="msg">예: 흡연실 · 게이트 25 옆 / 약국 · 출국장 3층 동쪽</p>';
   openSheet(`<div class="sheet-head"><h2>${esc(aptKo(code))} 공항 메모</h2>${X_BTN}</div>
-    ${list.length ? `<ul class="checks notes">${list.map(x => `<li><span aria-hidden="true">📍</span><label>${esc(x.text)}</label><button class="pk-x" type="button" data-act="note-del" data-code="${esc(code)}" data-id="${esc(x.id)}" aria-label="${esc(x.text)} 지우기">×</button></li>`).join('')}</ul>` : ex}
+    ${list.length ? `<ul class="checks notes">${list.map(x => `<li><span aria-hidden="true">📍</span><button class="ie" type="button" data-act="ie" data-kind="note" data-code="${esc(code)}" data-id="${esc(x.id)}" aria-label="${esc(x.text)} 고치기">${esc(x.text)}</button><button class="pk-x" type="button" data-act="note-del" data-code="${esc(code)}" data-id="${esc(x.id)}" aria-label="${esc(x.text)} 지우기">×</button></li>`).join('')}</ul><p class="ie-tip">글자를 누르면 바로 고칠 수 있어요</p>` : ex}
     <div class="pk-chips">${NOTE_CHIPS.map(c => `<button class="pk-c" type="button" data-act="note-chip" data-code="${esc(code)}" data-text="${esc(c)}">+ ${esc(c)}</button>`).join('')}</div>
     <div class="pk-add"><input id="note-in" type="text" maxlength="80" placeholder="어디에 있는지 적어요" autocomplete="off" value="${esc(prefill || '')}"><button class="btn btn-secondary" type="button" data-act="note-add" data-code="${esc(code)}">추가</button></div>
     <a class="txt-btn" href="${esc(mapsSearch(aptQuery(code)))}" target="_blank" rel="noopener">구글 지도에서 ${esc(aptKo(code))}공항 보기 ↗</a>`, '공항 메모');
@@ -1599,9 +1602,9 @@ function alertsSheet(){
     ${n ? '<div class="sheet-actions"><button class="btn btn-secondary" type="button" data-act="phone-alarm">휴대폰 알람도 맞추기</button></div>' : ''}`, '알림·위젯');
 }
 
-function packBlock(mine){ const li = x => `<li>${x.mine ? `<button class="pk-x" type="button" data-act="pack-del" data-id="${esc(x.id.slice(5))}" aria-label="${esc(x.text)} 지우기">×</button>` : ''}<input type="checkbox" id="ck-${esc(x.id)}" data-check="${esc(x.id)}" ${(currentTrip().check || {})[x.id] ? 'checked' : ''}><label for="ck-${esc(x.id)}">${esc(x.text)}</label></li>`;
+function packBlock(mine){ const li = x => `<li>${x.mine ? `<button class="pk-x" type="button" data-act="pack-del" data-id="${esc(x.id.slice(5))}" aria-label="${esc(x.text)} 지우기">×</button>` : ''}<input type="checkbox" id="ck-${esc(x.id)}" data-check="${esc(x.id)}" aria-label="${esc(x.text)}" ${(currentTrip().check || {})[x.id] ? 'checked' : ''}><button class="ie" type="button" data-act="ie" data-kind="pack" data-id="${esc(x.id.slice(5))}" aria-label="${esc(x.text)} 고치기">${esc(x.text)}</button></li>`;
   return `    <h3 class="pk-h">내 짐 <small>한 번 넣으면 다음 여행에도 그대로</small></h3>
-    ${mine.length ? `<ul class="checks">${mine.map(li).join('')}</ul>` : ''}
+    ${mine.length ? `<ul class="checks">${mine.map(li).join('')}</ul><p class="ie-tip">글자를 누르면 바로 고칠 수 있어요</p>` : ''}
     <div class="pk-chips">${PACK_SUGGEST.filter(s => !(state.pack || []).some(x => x.text === s)).map(s => `<button class="pk-c" type="button" data-act="pack-add" data-text="${esc(s)}">+ ${esc(s)}</button>`).join('')}</div>
     <div class="pk-add"><input id="pk-in" type="text" maxlength="40" placeholder="직접 넣기 (예: 카메라)" autocomplete="off"><button class="btn btn-secondary" type="button" data-act="pack-add">추가</button></div>
 `; }
@@ -1654,7 +1657,7 @@ function dutyCalcSheet(){
   const list = t.df || [];
   let sum = 0, unknown = false;
   const rows = list.map((x, i) => { const u = toUsd(x.a, x.c); if (u == null) unknown = true; else sum += u;
-    return `<li><span>${esc(x.a.toLocaleString('ko-KR'))} ${esc(x.c)}${u != null && x.c !== 'USD' ? ` <small>≈ ${esc(nf(u))}달러</small>` : ''}</span><button class="pk-x" type="button" data-act="df-del" data-i="${i}" aria-label="${esc(x.a.toLocaleString('ko-KR'))} ${esc(x.c)} 지우기">×</button></li>`; }).join('');
+    return `<li><button class="ie" type="button" data-act="ie" data-kind="df" data-i="${i}" aria-label="${esc(x.a.toLocaleString('ko-KR'))} ${esc(x.c)} 고치기">${esc(x.a.toLocaleString('ko-KR'))} ${esc(x.c)}${u != null && x.c !== 'USD' ? ` <small>≈ ${esc(nf(u))}달러</small>` : ''}</button><button class="pk-x" type="button" data-act="df-del" data-i="${i}" aria-label="${esc(x.a.toLocaleString('ko-KR'))} ${esc(x.c)} 지우기">×</button></li>`; }).join('');
   const over = sum > DF_LIMIT, krw = dfFx ? sum * dfFx.rates.KRW : null;
   const status = !list.length ? '<p class="msg">산 물건 값을 하나씩 넣어 주세요. 영수증 금액 그대로 넣으면 돼요.</p>'
     : unknown ? '<p class="msg">환율을 받아오지 못했어요. 인터넷이 되면 다시 열어 주세요. (달러로 넣으면 바로 계산돼요)</p>'
@@ -1664,13 +1667,48 @@ function dutyCalcSheet(){
   openSheet(`<div class="sheet-head"><h2>면세 한도 계산기</h2>${X_BTN}</div>
     <p class="msg">1인 ${DF_LIMIT}달러까지 면세 · 술(2L·400달러)·향수(100ml)는 따로 쳐요. 한 사람 몫만 넣어 주세요.</p>
     ${status}
-    ${rows ? `<ul class="df-list">${rows}</ul>` : ''}
+    ${rows ? `<ul class="df-list">${rows}</ul><p class="ie-tip">글자를 누르면 바로 고칠 수 있어요</p>` : ''}
     <div class="df-add"><div class="seg" role="group" aria-label="통화">${curs.map(c => `<button type="button" class="seg-b" data-act="df-cur" data-c="${c}" aria-pressed="${c === t.dfCur}">${c}</button>`).join('')}</div>
       <input id="df-amt" type="text" inputmode="decimal" placeholder="금액 (${esc(t.dfCur)})" aria-label="산 물건 금액" autocomplete="off">
       <button class="btn btn-primary" type="button" data-act="df-add">더하기</button></div>
     <div class="sheet-actions">${list.length ? '<button class="btn btn-secondary" type="button" data-act="df-clear">모두 지우기</button>' : ''}<button class="btn btn-secondary" type="button" data-act="checklist">귀국 준비로</button></div>
     <p class="foot-note">환율은 공개 환율(open.er-api.com)을 12시간에 한 번 받아요. 실제 세금은 세관 기준 환율로 계산돼요.</p>`, '면세 한도 계산기');
   if (!dfFx || Date.now() - dfFx.at > 12 * 3600000) loadFx().then(f => { const inp = $('#df-amt'); if (f && inp && !inp.value) dutyCalcSheet(); });
+}
+/* 그 자리에서 고치기 (공항 메모·내 짐·면세 계산기 모두 같은 방식): 글자를 누르면 입력칸으로 바뀜.
+   Enter나 바깥을 누르면 저장, Esc는 취소, 비우면 원래대로. 고친 뒤 6초 안에 '되돌리기' */
+function inlineEdit(el){
+  const kind = el.dataset.kind, t = currentTrip();
+  let item = null, val = '', max = 80, reopen = null;
+  if (kind === 'note') { const code = el.dataset.code; item = notesOf(code).find(x => x.id === el.dataset.id); val = item && item.text; reopen = () => aptNotesSheet(code); }
+  else if (kind === 'pack') { item = (state.pack || []).find(x => x.id === el.dataset.id); val = item && item.text; max = 40; reopen = checklistSheet; }
+  else if (kind === 'df') { item = t && t.df && t.df[+el.dataset.i]; val = item && String(item.a); max = 20; reopen = dutyCalcSheet; }
+  if (!item || !reopen) return;
+  const inp = document.createElement('input');
+  inp.type = 'text'; inp.className = 'ie-in'; inp.value = val; inp.maxLength = max; inp.autocomplete = 'off'; inp.enterKeyHint = 'done';
+  inp.setAttribute('data-nodraft', ''); inp.setAttribute('aria-label', kind === 'df' ? '금액 고치기 (' + item.c + ')' : '고치기');
+  if (kind === 'df') inp.inputMode = 'decimal';
+  el.replaceWith(inp); inp.focus(); inp.select();
+  let done = false;
+  const finish = keep => {
+    if (done) return; done = true;
+    const v = inp.value.trim();
+    if (!keep || !v || v === val) return reopen();
+    if (kind === 'df') {
+      const a = parseFloat(v.replace(/,/g, '').replace(/[^0-9.]/g, ''));
+      if (!(a > 0) || a > 1e12) { toast('금액을 숫자로 넣어 주세요. 원래 금액은 그대로예요'); return reopen(); }
+      if (Math.round(a * 100) / 100 === item.a) return reopen();
+      const before = snapState(); item.a = Math.round(a * 100) / 100; save(); render(); reopen(); return undoable('금액을 고쳤어요', before, [], reopen);
+    }
+    if (kind === 'pack' && state.pack.some(x => x !== item && x.text === v)) { toast('이미 있는 준비물이에요'); return reopen(); }
+    const before = snapState(); item.text = v.slice(0, max); save(); render(); reopen();
+    undoable(kind === 'pack' ? '준비물을 고쳤어요' : '메모를 고쳤어요', before, [], reopen);
+  };
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); finish(true); }
+    else if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); finish(false); }
+  });
+  inp.addEventListener('blur', () => finish(true));
 }
 function dfAdd(){
   const t = currentTrip(), inp = $('#df-amt'); if (!t || !inp) return;
@@ -2154,6 +2192,7 @@ document.addEventListener('click', e => {
   if (act === 'note-add') { const inp = $('#note-in'), text = ((inp && inp.value) || '').trim().replace(/\s*·\s*$/, '').slice(0, 80), code = el.dataset.code; if (!text || !/^[A-Z0-9]{3}$/.test(code)) { if (inp) inp.focus(); return; }
     state.aptNotes = state.aptNotes || {}; const a = state.aptNotes[code] || (state.aptNotes[code] = []); if (a.length >= 30) return toast('공항마다 30개까지 적을 수 있어요'); a.push({id: uid(), text}); save(); render(); toast('메모를 적었어요. 다음 여행에도 나와요'); return aptNotesSheet(code); }
   if (act === 'note-del') { const code = el.dataset.code, a = notesOf(code), before = snapState(); if (state.aptNotes && a.length) { state.aptNotes[code] = a.filter(x => x.id !== el.dataset.id); if (!state.aptNotes[code].length) delete state.aptNotes[code]; save(); render(); } aptNotesSheet(code); return undoable('메모를 지웠어요', before, [], () => aptNotesSheet(code)); }
+  if (act === 'ie') return inlineEdit(el);
   if (act === 'dutycalc') return dutyCalcSheet();
   if (act === 'df-cur') { if (t) { t.dfCur = el.dataset.c; save(); } return dutyCalcSheet(); }
   if (act === 'df-add') return dfAdd();
@@ -2275,7 +2314,7 @@ refreshLive(false);
 
 
 <!--APPINFO--><script>
-window.APP_INFO={"name": "Aero", "repo": "mini-2026/aero", "mount": "#ver", "notes": [{"v": "current", "d": "2026.11.26", "items": ["↩️ '이 구간 지우기' 뒤 '되돌리기'를 누르면 구간이 제대로 돌아와요. 메모·내 짐·면세 계산기 물건을 지울 때도 6초 안에 되돌릴 수 있고, '모두 지우기'는 한 번 더 눌러야 지워져요", "🎫 탑승권 보기에서 잘못 찍은 탑승권만 따로 지울 수 있어요", "✏️ 항공편 날짜·편명을 고쳐도 '공항까지 이동' 같은 설정과 탑승권이 그대로 남아요", "🛡 망가진 백업 파일을 불러와도 앱이 하얀 화면으로 멈추지 않아요. 인천공항 인증키는 백업 파일에 넣지 않아요", "📱 아이폰(웹)에서도 PDF와 탑승권 바코드를 읽을 수 있게 고쳤어요", "🔠 작은 글씨와 버튼을 키워서 더 잘 보이고 누르기 쉬워졌어요", "적던 창을 Esc 키로 닫을 때도 저장할지 물어봐요. 항공권이 많아도 '내 항공권'이 빨리 열려요. 지난 여행에는 택시 카드·알림 버튼을 숨겨요"]}, {"v": "v1.26", "d": "2026.11.20", "items": ["📝 적던 글 지키기: 글을 적다가 앱이 꺼져도 사라지지 않아요. 다시 열어 같은 칸을 열면 적던 글이 그대로 이어져요 (필요 없으면 '버리기'를 눌러 주세요)"]}, {"v": "v1.25", "d": "2026.11.20", "items": ["💾 '저장할까요?' 창에서 '다음부터 묻지 않고 바로 저장'을 누르면, 다음부터는 닫을 때 묻지 않고 저장해요. 저장한 뒤 뜨는 '다시 묻기'를 누르면 다시 물어봐요"]}, {"v": "v1.24", "d": "2026.11.20", "items": ["💾 글을 적던 창을 × 나 뒤로 가기로 닫으면 '저장할까요?'라고 물어봐요. '저장'·'저장 안 함'·'계속 적기' 중에 골라 주세요"]}, {"v": "v1.23", "d": "2026.11.20", "items": ["✋ 글을 적던 창의 바깥을 실수로 눌러도 창이 닫히지 않아요. 적던 내용이 사라지지 않게 '입력한 내용이 있어요'라고 알려 드려요. 닫으려면 × 버튼을 눌러 주세요"]}, {"v": "v1.22", "d": "2026.11.20", "items": ["💬 창이 열려 있을 때는 알림이 화면 위쪽에 떠서 창의 버튼을 가리지 않아요"]}, {"v": "v1.21", "d": "2026.11.15", "items": ["✏️ 문구 다듬기: '지금 출발하세요'·'확인하세요'처럼 시키는 말을 '지금 출발해요'·'확인해 주세요'로 부드럽게 바꾸고, 띄어쓰기(알려 드려요)를 맞췄어요. 비밀번호·저장 공간 안내를 다른 앱과 같은 말로 맞추고, '내 데이터 백업'을 '내 기록 백업'으로 바꿨어요"]}, {"v": "v1.20", "d": "2026.11.13", "items": ["✍️ 첫 화면 아래에 '직접 입력' 버튼이 늘 있어요. 항공권을 넣은 뒤에도 바로 다음 항공편을 넣을 수 있어요", "📅 직접 입력할 때 날짜가 미리 채워져 있지 않아요. 날짜를 꼭 골라 주세요", "⚠️ 도착 시각이 출발보다 일러서 비행시간이 아주 길어지면(예: 22시간) 저장 전에 한 번 더 물어봐요", "🗂 항공권을 여러 개 넣어도 첫 화면에는 가장 가까운 여행이 나와요. 방금 넣은 여행은 알림의 '보기'로 바로 볼 수 있어요", "🛫 오늘 이미 출발한 여행은 첫 화면과 목록 모두 '여행 중'으로 같게 보여요. 지난 여행에는 공항 이동·실시간 안내를 보여 주지 않아요", "🔎 찾는 중에는 찾은 개수만 보여 주고, '지난 여행 모두 지우기'는 숨겨요", "🔒 백업 비밀번호는 8글자 이상으로 바뀌었어요. 숫자만 쓰면 한 번 더 알려 드려요. 전에 만든 백업은 그대로 열려요", "🛡 보안: 앱 밖으로 여는 주소를 지도·플레이 스토어·이 앱 저장소·정부 입국 사이트로 더 좁혔어요", "앱 저장 공간이 가득 차서 저장하지 못하면 다시 알려 드려요. 정보 창 글이 단어 중간에서 끊기지 않게, '화면 밝기'는 '화면 색'으로 이름을 바꿨어요"]}, {"v": "v1.19", "d": "2026.11.13", "items": ["🔒 백업 비밀번호: 백업 파일에 예약번호·여권 만료일·탑승권 사진이 들어 있어서, 비밀번호(6글자 이상)를 넣으면 잠가서 저장해요", "🗂 내 항공권 목록을 날짜순으로, '다가오는 여행'과 '지난 여행'으로 나눠 보여요. 연도와 편명도 같이 나오고, 지난 여행은 한 번에 지울 수 있어요", "🔎 내 항공권 찾기: 편명·공항·도시·이름·예약번호로 찾아요 (여러 낱말을 띄어 쓰면 모두 들어간 것만)", "✍️ 직접 입력할 때 전에 넣은 편명이면 공항·시각·터미널을 저절로 채워요", "⚠️ 지난 날짜, 출발과 도착이 같은 공항, 출발보다 이른 도착 시각은 저장 전에 한 번 더 알려 드려요. 끝난 여행은 '지난 여행'으로 표시해요", "↩️ 항공권·구간을 지운 뒤 6초 안에 '되돌리기'를 누르면 원래대로 돌아와요", "🔠 글자 크기(보통·크게·아주 크게)와 화면 밝기(폰 설정대로·밝게·어둡게)를 '내 항공권' 아래에서 골라요", "📶 아이폰 웹앱을 한 번 열면 공항·비행기 안처럼 인터넷이 없어도 열려요", "💾 폰 저장 공간이 부족해 저장하지 못하면 알려 드려요", "🛡 보안: 바깥 글꼴(구글)을 쓰지 않고, 앱 화면이 정해 둔 곳에만 연결해요. 폰 자동 백업에서 항공권 기록을 빼고, 바깥 링크는 안전한 주소만 열어요", "작은 버튼(고치기·실시간 운항·예시 닫기·버전)을 누르기 쉽게 키우고, 흐린 회색 글자를 더 진하게 했어요"]}, {"v": "v1.18", "d": "2026.11.12", "items": ["📱 아이폰에서도 쓸 수 있어요: 다운로드 페이지의 '아이폰·웹에서 열기'로 열고 홈 화면에 추가하면 돼요", "🇪🇺 유럽 ETIAS 안내를 최신으로: 아직 시행 전이고 시작 날짜가 정해지지 않았어요"]}, {"v": "v1.17", "d": "2026.11.08", "items": ["🕐 시차·현지 시간: 현지 시각과 한국 시각을 나란히, 시차 적응 팁과 비행기에서 잘지 말지, 한국 가족에게 연락하기 좋은 시간", "📝 공항 메모: 라운지·흡연실·약국 위치를 공항마다 적어 두면 다음 여행과 환승 안내에도 그대로", "🔌 입국 준비의 멀티 어댑터에 나라별 콘센트 모양과 전압(일본 100V 등)을 같이 알려 드려요", "🗣️ 이음으로 그 나라 말 준비: 버튼 한 번에 번역기 이음이 다음 여행 나라 말로 열려요"]}, {"v": "v1.16", "d": "2026.11.05", "items": ["보안 강화: 앱 화면이 허락된 곳 말고는 스크립트를 불러오지 못하게 막고, 폰의 다른 파일을 읽지 못하게 하고, 업데이트 파일은 이 앱 저장소 주소에서만 받아요", "알림 보안: 다른 앱이 Aero 이름으로 가짜 알림을 띄우지 못하게 막았어요"]}, {"v": "v1.15", "d": "2026.11.05", "items": ["입국 준비에 「내 짐」: 충전기·상비약 같은 준비물을 한 번 넣으면 다음 여행에도 그대로, 자주 쓰는 준비물은 눌러서 바로 추가", "출발 전날 밤 9시 알림에 남은 준비물 개수도 알려 드려요"]}, {"v": "v1.14", "d": "2026.11.05", "items": ["귀국 준비에 면세 한도 계산기: 산 물건 금액을 넣으면 1인 800달러를 넘는지 바로 알려 드려요", "왼쪽 아래 버전 → 내 기록 백업: 기록을 파일로 저장했다가 새 폰에서 불러오기"]}, {"v": "v1.13", "d": "2026.11.01", "items": ["오는 편(한국 도착)에도 '귀국 준비' 체크리스트: 면세 한도, 세관 신고, Q-CODE, 반입 금지 식품"]}, {"v": "v1.12", "d": "2026.11.01", "items": ["환승 시간이 짧으면 빨간 경고와 함께, 다음 편을 놓쳤을 때 할 일을 알려 드려요", "귀국편까지 넣으면 한 여행으로 묶여 날짜별 전체 일정(몇 박 며칠, 어디서 몇 박)을 보여 드려요"]}, {"v": "v1.11", "d": "2026.11.01", "items": ["구간마다 탑승권을 따로 찍거나 직접 넣어도, 이어지는 환승편은 한 여정으로 묶여 환승 안내가 나와요", "작은 화면에서 아래 버튼 글자가 두 줄로 깨지지 않게 고쳤어요"]}, {"v": "v1.10", "d": "2026.11.01", "items": ["보안: 앱 안에서는 바깥 스크립트를 불러오는 길을 완전히 막았어요"]}, {"v": "v1.9", "d": "2026.11.01", "items": ["왼쪽 아래 버전을 누르면 앱 정보·업데이트 내용·개인정보를 볼 수 있어요", "새 버전이 나오면 버전 글씨가 노란색으로 바뀌어요"]}, {"v": "v1.8", "d": "2026.11.01", "items": ["쓰이지 않던 AI 연결 코드를 완전히 지웠어요", "처음 설치하면 빈 화면에서 시작해요"]}, {"v": "v1.7", "d": "2026.11.01", "items": ["알림 숫자는 내가 넣은 항공권만 세요", "예시는 '예시로 둘러보기'에서만 보이고 저장되지 않아요"]}, {"v": "v1.6", "d": "2026.11.01", "items": ["항공권 사진·캡처·PDF를 폰 안에서 읽어요 (탑승권 바코드 + 글자 인식)", "공항으로 나갈 시각과 출발 알림 3번", "홈 화면 위젯, 휴대폰 알람 맞추기", "탑승권 크게 보기, 일행 탑승권 묶기"]}], "privacy": "항공권 사진과 정보는 이 폰에만 저장돼요. 바코드·글자 인식은 폰 안에서 해요. 인터넷은 새 버전 확인(GitHub), 도착지 날씨(Open-Meteo, 공항 위치만 보내요), 면세 계산기 환율(open.er-api.com), 인천공항 실시간 정보(직접 켰을 때만, 공공데이터포털에 편명만 보내요), 지도·길찾기를 열 때만 써요. 이름·예약번호·좌석은 어디에도 보내지 않아요. 안드로이드 앱의 Google 글자 인식 부품은 익명 사용 기록을 Google에 보낼 수 있어요(항공권 내용은 보내지 않아요).", "backup": {"keys": ["chalkak.v1"], "strip": {"chalkak.v1": ["icnKey"]}, "idb": [{"db": "chalkak", "store": "img"}], "bridge": "TicketNative"}};
+window.APP_INFO={"name": "Aero", "repo": "mini-2026/aero", "mount": "#ver", "notes": [{"v": "current", "d": "2026.11.26", "items": ["⬇️ 새 버전을 앱 안에서 바로 받아요. 왼쪽 아래 버전을 누르고 '업데이트 받기'를 누르면 받는 정도(%)가 보이고, 다 받으면 설치 화면이 열려요. 받은 파일은 앱을 다시 열 때 저절로 지워져요", "🔒 받은 파일이 Aero에서 만든 진짜 새 버전인지 확인한 뒤에만 설치해요", "✏️ 공항 메모·내 짐·면세 계산기에 넣은 것을 누르면 그 자리에서 바로 고칠 수 있어요. 고친 뒤 6초 안에 '되돌리기'를 누르면 원래대로 돌아와요", "💾 백업 파일이 너무 크면(20MB 넘음) 그냥 멈추지 않고 파일 크기와 함께 알려 드려요. 너무 커서 불러올 수 없는 백업은 만들기 전에 알려 드려요", "🔢 왼쪽 아래 버전이 v1.26으로 잘못 보이던 문제를 고쳤어요"]}, {"v": "v1.27", "d": "2026.11.26", "items": ["↩️ '이 구간 지우기' 뒤 '되돌리기'를 누르면 구간이 제대로 돌아와요. 메모·내 짐·면세 계산기 물건을 지울 때도 6초 안에 되돌릴 수 있고, '모두 지우기'는 한 번 더 눌러야 지워져요", "🎫 탑승권 보기에서 잘못 찍은 탑승권만 따로 지울 수 있어요", "✏️ 항공편 날짜·편명을 고쳐도 '공항까지 이동' 같은 설정과 탑승권이 그대로 남아요", "🛡 망가진 백업 파일을 불러와도 앱이 하얀 화면으로 멈추지 않아요. 인천공항 인증키는 백업 파일에 넣지 않아요", "📱 아이폰(웹)에서도 PDF와 탑승권 바코드를 읽을 수 있게 고쳤어요", "🔠 작은 글씨와 버튼을 키워서 더 잘 보이고 누르기 쉬워졌어요", "적던 창을 Esc 키로 닫을 때도 저장할지 물어봐요. 항공권이 많아도 '내 항공권'이 빨리 열려요. 지난 여행에는 택시 카드·알림 버튼을 숨겨요"]}, {"v": "v1.26", "d": "2026.11.20", "items": ["📝 적던 글 지키기: 글을 적다가 앱이 꺼져도 사라지지 않아요. 다시 열어 같은 칸을 열면 적던 글이 그대로 이어져요 (필요 없으면 '버리기'를 눌러 주세요)"]}, {"v": "v1.25", "d": "2026.11.20", "items": ["💾 '저장할까요?' 창에서 '다음부터 묻지 않고 바로 저장'을 누르면, 다음부터는 닫을 때 묻지 않고 저장해요. 저장한 뒤 뜨는 '다시 묻기'를 누르면 다시 물어봐요"]}, {"v": "v1.24", "d": "2026.11.20", "items": ["💾 글을 적던 창을 × 나 뒤로 가기로 닫으면 '저장할까요?'라고 물어봐요. '저장'·'저장 안 함'·'계속 적기' 중에 골라 주세요"]}, {"v": "v1.23", "d": "2026.11.20", "items": ["✋ 글을 적던 창의 바깥을 실수로 눌러도 창이 닫히지 않아요. 적던 내용이 사라지지 않게 '입력한 내용이 있어요'라고 알려 드려요. 닫으려면 × 버튼을 눌러 주세요"]}, {"v": "v1.22", "d": "2026.11.20", "items": ["💬 창이 열려 있을 때는 알림이 화면 위쪽에 떠서 창의 버튼을 가리지 않아요"]}, {"v": "v1.21", "d": "2026.11.15", "items": ["✏️ 문구 다듬기: '지금 출발하세요'·'확인하세요'처럼 시키는 말을 '지금 출발해요'·'확인해 주세요'로 부드럽게 바꾸고, 띄어쓰기(알려 드려요)를 맞췄어요. 비밀번호·저장 공간 안내를 다른 앱과 같은 말로 맞추고, '내 데이터 백업'을 '내 기록 백업'으로 바꿨어요"]}, {"v": "v1.20", "d": "2026.11.13", "items": ["✍️ 첫 화면 아래에 '직접 입력' 버튼이 늘 있어요. 항공권을 넣은 뒤에도 바로 다음 항공편을 넣을 수 있어요", "📅 직접 입력할 때 날짜가 미리 채워져 있지 않아요. 날짜를 꼭 골라 주세요", "⚠️ 도착 시각이 출발보다 일러서 비행시간이 아주 길어지면(예: 22시간) 저장 전에 한 번 더 물어봐요", "🗂 항공권을 여러 개 넣어도 첫 화면에는 가장 가까운 여행이 나와요. 방금 넣은 여행은 알림의 '보기'로 바로 볼 수 있어요", "🛫 오늘 이미 출발한 여행은 첫 화면과 목록 모두 '여행 중'으로 같게 보여요. 지난 여행에는 공항 이동·실시간 안내를 보여 주지 않아요", "🔎 찾는 중에는 찾은 개수만 보여 주고, '지난 여행 모두 지우기'는 숨겨요", "🔒 백업 비밀번호는 8글자 이상으로 바뀌었어요. 숫자만 쓰면 한 번 더 알려 드려요. 전에 만든 백업은 그대로 열려요", "🛡 보안: 앱 밖으로 여는 주소를 지도·플레이 스토어·이 앱 저장소·정부 입국 사이트로 더 좁혔어요", "앱 저장 공간이 가득 차서 저장하지 못하면 다시 알려 드려요. 정보 창 글이 단어 중간에서 끊기지 않게, '화면 밝기'는 '화면 색'으로 이름을 바꿨어요"]}, {"v": "v1.19", "d": "2026.11.13", "items": ["🔒 백업 비밀번호: 백업 파일에 예약번호·여권 만료일·탑승권 사진이 들어 있어서, 비밀번호(6글자 이상)를 넣으면 잠가서 저장해요", "🗂 내 항공권 목록을 날짜순으로, '다가오는 여행'과 '지난 여행'으로 나눠 보여요. 연도와 편명도 같이 나오고, 지난 여행은 한 번에 지울 수 있어요", "🔎 내 항공권 찾기: 편명·공항·도시·이름·예약번호로 찾아요 (여러 낱말을 띄어 쓰면 모두 들어간 것만)", "✍️ 직접 입력할 때 전에 넣은 편명이면 공항·시각·터미널을 저절로 채워요", "⚠️ 지난 날짜, 출발과 도착이 같은 공항, 출발보다 이른 도착 시각은 저장 전에 한 번 더 알려 드려요. 끝난 여행은 '지난 여행'으로 표시해요", "↩️ 항공권·구간을 지운 뒤 6초 안에 '되돌리기'를 누르면 원래대로 돌아와요", "🔠 글자 크기(보통·크게·아주 크게)와 화면 밝기(폰 설정대로·밝게·어둡게)를 '내 항공권' 아래에서 골라요", "📶 아이폰 웹앱을 한 번 열면 공항·비행기 안처럼 인터넷이 없어도 열려요", "💾 폰 저장 공간이 부족해 저장하지 못하면 알려 드려요", "🛡 보안: 바깥 글꼴(구글)을 쓰지 않고, 앱 화면이 정해 둔 곳에만 연결해요. 폰 자동 백업에서 항공권 기록을 빼고, 바깥 링크는 안전한 주소만 열어요", "작은 버튼(고치기·실시간 운항·예시 닫기·버전)을 누르기 쉽게 키우고, 흐린 회색 글자를 더 진하게 했어요"]}, {"v": "v1.18", "d": "2026.11.12", "items": ["📱 아이폰에서도 쓸 수 있어요: 다운로드 페이지의 '아이폰·웹에서 열기'로 열고 홈 화면에 추가하면 돼요", "🇪🇺 유럽 ETIAS 안내를 최신으로: 아직 시행 전이고 시작 날짜가 정해지지 않았어요"]}, {"v": "v1.17", "d": "2026.11.08", "items": ["🕐 시차·현지 시간: 현지 시각과 한국 시각을 나란히, 시차 적응 팁과 비행기에서 잘지 말지, 한국 가족에게 연락하기 좋은 시간", "📝 공항 메모: 라운지·흡연실·약국 위치를 공항마다 적어 두면 다음 여행과 환승 안내에도 그대로", "🔌 입국 준비의 멀티 어댑터에 나라별 콘센트 모양과 전압(일본 100V 등)을 같이 알려 드려요", "🗣️ 이음으로 그 나라 말 준비: 버튼 한 번에 번역기 이음이 다음 여행 나라 말로 열려요"]}, {"v": "v1.16", "d": "2026.11.05", "items": ["보안 강화: 앱 화면이 허락된 곳 말고는 스크립트를 불러오지 못하게 막고, 폰의 다른 파일을 읽지 못하게 하고, 업데이트 파일은 이 앱 저장소 주소에서만 받아요", "알림 보안: 다른 앱이 Aero 이름으로 가짜 알림을 띄우지 못하게 막았어요"]}, {"v": "v1.15", "d": "2026.11.05", "items": ["입국 준비에 「내 짐」: 충전기·상비약 같은 준비물을 한 번 넣으면 다음 여행에도 그대로, 자주 쓰는 준비물은 눌러서 바로 추가", "출발 전날 밤 9시 알림에 남은 준비물 개수도 알려 드려요"]}, {"v": "v1.14", "d": "2026.11.05", "items": ["귀국 준비에 면세 한도 계산기: 산 물건 금액을 넣으면 1인 800달러를 넘는지 바로 알려 드려요", "왼쪽 아래 버전 → 내 기록 백업: 기록을 파일로 저장했다가 새 폰에서 불러오기"]}, {"v": "v1.13", "d": "2026.11.01", "items": ["오는 편(한국 도착)에도 '귀국 준비' 체크리스트: 면세 한도, 세관 신고, Q-CODE, 반입 금지 식품"]}, {"v": "v1.12", "d": "2026.11.01", "items": ["환승 시간이 짧으면 빨간 경고와 함께, 다음 편을 놓쳤을 때 할 일을 알려 드려요", "귀국편까지 넣으면 한 여행으로 묶여 날짜별 전체 일정(몇 박 며칠, 어디서 몇 박)을 보여 드려요"]}, {"v": "v1.11", "d": "2026.11.01", "items": ["구간마다 탑승권을 따로 찍거나 직접 넣어도, 이어지는 환승편은 한 여정으로 묶여 환승 안내가 나와요", "작은 화면에서 아래 버튼 글자가 두 줄로 깨지지 않게 고쳤어요"]}, {"v": "v1.10", "d": "2026.11.01", "items": ["보안: 앱 안에서는 바깥 스크립트를 불러오는 길을 완전히 막았어요"]}, {"v": "v1.9", "d": "2026.11.01", "items": ["왼쪽 아래 버전을 누르면 앱 정보·업데이트 내용·개인정보를 볼 수 있어요", "새 버전이 나오면 버전 글씨가 노란색으로 바뀌어요"]}, {"v": "v1.8", "d": "2026.11.01", "items": ["쓰이지 않던 AI 연결 코드를 완전히 지웠어요", "처음 설치하면 빈 화면에서 시작해요"]}, {"v": "v1.7", "d": "2026.11.01", "items": ["알림 숫자는 내가 넣은 항공권만 세요", "예시는 '예시로 둘러보기'에서만 보이고 저장되지 않아요"]}, {"v": "v1.6", "d": "2026.11.01", "items": ["항공권 사진·캡처·PDF를 폰 안에서 읽어요 (탑승권 바코드 + 글자 인식)", "공항으로 나갈 시각과 출발 알림 3번", "홈 화면 위젯, 휴대폰 알람 맞추기", "탑승권 크게 보기, 일행 탑승권 묶기"]}], "privacy": "항공권 사진과 정보는 이 폰에만 저장돼요. 바코드·글자 인식은 폰 안에서 해요. 인터넷은 새 버전 확인·받기(GitHub), 도착지 날씨(Open-Meteo, 공항 위치만 보내요), 면세 계산기 환율(open.er-api.com), 인천공항 실시간 정보(직접 켰을 때만, 공공데이터포털에 편명만 보내요), 지도·길찾기를 열 때만 써요. 이름·예약번호·좌석은 어디에도 보내지 않아요. 안드로이드 앱의 Google 글자 인식 부품은 익명 사용 기록을 Google에 보낼 수 있어요(항공권 내용은 보내지 않아요).", "backup": {"keys": ["chalkak.v1"], "strip": {"chalkak.v1": ["icnKey"]}, "idb": [{"db": "chalkak", "store": "img"}], "bridge": "TicketNative"}};
 window.APP_INFO.online=!!window.TicketNative;window.APP_INFO.web=!window.TicketNative&&location.protocol==='https:';
 window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만 정해요
 </script>
@@ -2371,9 +2410,41 @@ window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만
     '.hint{margin:0;color:var(--ink2)}' +
     '.pw{display:block;width:100%;box-sizing:border-box;min-height:48px;margin:0 0 4px;border:1px solid var(--line);background:var(--btn);color:var(--ink);border-radius:12px;padding:10px 12px;font:inherit;font-size:16px}.row .pw{flex:1 1 160px;width:auto;margin:0}' +
     '.w.dk{--bg:#18212b;--ink:#e8edf2;--ink2:#b3bec9;--ink3:#8a96a3;--line:#2b3744;--pill:#173a2c;--pillInk:#7fd3ac;--btn:#222d38;--main:#e8edf2;--mainInk:#101820}' +
+    '.upbar{display:block;height:8px;margin-top:8px;border-radius:999px;background:var(--line);overflow:hidden}.upbar i{display:block;height:100%;border-radius:inherit;background:var(--yellow);transition:width .2s}' +
     'button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}';
   var isOpen = false;
+  /* 앱 안에서 새 버전 받기 (안드로이드 앱): 받는 중 % → 검사 → 설치 화면. 안 되면 브라우저로 받기 */
+  var NB = window.TicketNative, INAPP = !!(NB && typeof NB.installUpdate === 'function');
+  var UPD = { st: '', n: -1, why: '' }, UPD_KEY = 'aero-upd-wait';
+  var UPD_WHY = {
+    net: '인터넷 연결을 확인하고 다시 해 주세요.',
+    size: '파일이 예상보다 커서 받기를 멈췄어요.',
+    bad: '받은 파일이 망가졌어요. 다시 받아 주세요.',
+    pkg: 'Aero 앱 파일이 아니라서 설치하지 않았어요.',
+    sign: 'Aero에서 만든 파일인지 확인되지 않아 설치하지 않았어요.',
+    old: '받은 파일이 지금 쓰는 버전과 같거나 더 예전 버전이에요.',
+    none: '새 버전 파일을 찾지 못했어요.',
+    open: '설치 화면을 열지 못했어요.'
+  };
+  function updWait(on) { try { if (on) localStorage.setItem(UPD_KEY, String(Date.now())); else localStorage.removeItem(UPD_KEY); } catch (e) { /* 무시 */ } }
+  function updGet() {
+    if (!INAPP) return;
+    if (UPD.st === 'dl') return;
+    UPD.st = 'dl'; UPD.n = -1; UPD.why = ''; if (isOpen) render();
+    try { NB.installUpdate(); } catch (e) { UPD.st = 'fail'; UPD.why = 'open'; if (isOpen) render(); }
+  }
+  function updState(st, v) {
+    UPD.st = String(st || ''); UPD.n = UPD.st === 'dl' ? Math.max(-1, Math.min(100, Math.round(+v))) : -1; UPD.why = UPD.st === 'fail' ? String(v || '') : '';
+    if (isNaN(UPD.n)) UPD.n = -1;
+    updWait(UPD.st === 'perm');
+    if (isOpen) render();
+  }
   function statusHTML() {
+    if (INAPP && UPD.st === 'dl') return (UPD.n >= 0 ? '새 버전 받는 중 <b>' + UPD.n + '%</b>' : '새 버전 받는 중이에요…') + '<span class="upbar" aria-hidden="true"><i style="width:' + Math.max(0, UPD.n) + '%"></i></span>';
+    if (INAPP && UPD.st === 'ok') return "다 받았어요. 열린 설치 화면에서 '업데이트'를 눌러 주세요. 저장한 항공권은 그대로 남아요.";
+    if (INAPP && UPD.st === 'perm') return "처음 한 번만 설치 허용이 필요해요. 열린 설정 화면에서 '이 출처 허용'을 켜고 돌아오면 이어서 설치해요.";
+    if (INAPP && UPD.st === 'permno') return "설치 허용이 꺼져 있어서 설치하지 못했어요. '이 출처 허용'을 켜고 다시 해 보거나 브라우저로 받아 주세요.";
+    if (INAPP && UPD.st === 'fail') return '새 버전을 받지 못했어요. ' + (UPD_WHY[UPD.why] || UPD_WHY.net);
     if (!C.online) return C.web ? '웹앱은 열 때마다 저절로 최신 버전으로 바뀌어요.' : '미리보기에서는 새 버전을 확인하지 않아요. 앱에서는 자동으로 확인해요.';
     if (checking) return '새 버전을 확인하는 중이에요…';
     if (hasUpdate()) return '새 버전 <b>v' + esc(norm(latest.v)) + '</b>이 나왔어요.';
@@ -2470,7 +2541,9 @@ window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만
     }).catch(function () { bkDone(false); });
   }
   function bkWrite(text) {
-      var name = bkName(), br = bkBridge();
+      var name = bkName(), br = bkBridge(), size = new Blob([text]).size;
+      /* 불러올 수 없는 백업은 만들지 않음 */
+      if (size > BK_MAX) { bkSet('백업 파일이 너무 커요 (' + mb(size) + '). ' + mb(BK_MAX) + '까지 불러올 수 있어서 저장하지 않았어요. 지난 여행을 지우고 다시 해 주세요.'); return; }
       if (br) { bkSet('저장할 곳을 골라 주세요 (내 파일·드라이브 등)', true); br.backupSave(name, text); return; }
       if (typeof B.save === 'function') { Promise.resolve(B.save(name, text)).then(function (ok) { bkDone(ok !== false, ok === false ? 'cancel' : ''); }, function () { bkDone(false); }); return; }
       var blob = new Blob([text], { type: 'application/json' }), f = window.File ? new File([blob], name, { type: 'application/json' }) : null;
@@ -2482,8 +2555,20 @@ window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만
     if (bk.busy) return; bk.pending = null; bk.locked = null;
     var br = bkBridge(); if (br && typeof br.backupOpen === 'function') { bkSet('백업 파일을 골라 주세요', true); br.backupOpen(); return; }
     var inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'application/json,text/plain,application/octet-stream,.json'; inp.style.display = 'none'; document.body.appendChild(inp);
-    inp.addEventListener('change', function () { var f = inp.files && inp.files[0]; inp.remove(); if (!f) return; var r = new FileReader(); r.onload = function () { bkOpened(String(r.result)); }; r.onerror = function () { bkOpened(null); }; r.readAsText(f); });
+    inp.addEventListener('change', function () { var f = inp.files && inp.files[0]; inp.remove(); if (!f) return; if (f.size > BK_MAX) { bkOpenFail('big', f.size); return; } var r = new FileReader(); r.onload = function () { bkOpened(String(r.result)); }; r.onerror = function () { bkOpenFail('read'); }; r.readAsText(f); });
     inp.click();
+  }
+  /* 불러오기 한도. 기록만이면 수십 KB지만 탑승권 사진이 들어가요: 앱은 1600px JPEG(화질 82, 보통 0.2~0.5MB),
+     웹은 2000px JPEG(화질 90, 0.5~1.2MB). 백업 파일 안에서는 글자로 바뀌어 1.33배, 비밀번호로 잠그면 다시 1.33배(약 1.8배)라
+     사진 한 장이 0.4~2MB쯤 돼요. 20MB면 사진 있는 항공권 10~50개. 폰 메모리 안에서 한 번에 읽어도 괜찮은 크기 (앱 쪽 0x1400000과 같게) */
+  var BK_MAX = 20 * 1024 * 1024;
+  var mb = function (b) { return (b / 1048576).toFixed(1).replace(/\.0$/, '') + 'MB'; };
+  /* 백업 파일을 골랐는데 못 읽음: 너무 큼(크기 모르면 -1) · 읽기 실패. 고르기를 취소한 경우(bkOpened(null))와 구분 */
+  function bkOpenFail(kind, bytes) {
+    var b = +bytes || 0;
+    bk.pending = null; bk.locked = null;
+    if (kind === 'big') bkSet('백업 파일이 너무 커요' + (b > 0 ? ' (' + mb(b) + ')' : '') + '. ' + mb(BK_MAX) + '까지 불러올 수 있어요.');
+    else bkSet('백업 파일을 읽지 못했어요. 다시 골라 주세요.');
   }
   function bkOpened(text) {
     if (text == null) { bkSet(''); return; }
@@ -2538,6 +2623,16 @@ window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만
         '<div class="row"><button class="btn" type="button" data-bk="save"' + (bk.busy ? ' disabled' : '') + '>백업 파일로 저장</button><button class="btn" type="button" data-bk="open"' + (bk.busy ? ' disabled' : '') + '>백업 불러오기</button></div>') +
       (bk.msg ? '<p class="hint" role="status">' + esc(bk.msg) + '</p>' : '');
   }
+  function updRow(up) {
+    var B = function (k, t, main, dis) { return '<button class="btn' + (main ? ' main' : '') + '" type="button" data-upd="' + k + '"' + (dis ? ' disabled' : '') + '>' + t + '</button>'; };
+    var chk = C.online ? '<button class="btn" type="button" data-chk' + (checking ? ' disabled' : '') + '>새 버전 확인</button>' : '';
+    if (INAPP && UPD.st === 'dl') return B('get', '받는 중…', true, true);
+    if (INAPP && UPD.st === 'ok') return B('get', '설치 화면 다시 열기', true);
+    if (INAPP && UPD.st === 'perm') return B('get', '설치 허용 켜러 가기', true);
+    if (INAPP && (UPD.st === 'permno' || UPD.st === 'fail')) return B('get', '다시 해 보기', true) + B('web', '브라우저로 받기');
+    if (INAPP) return (up ? B('get', '업데이트 받기', true) : '') + chk;
+    return (up && latest.url ? '<a class="btn main" href="' + esc(latest.url) + '" target="_blank" rel="noopener">업데이트 받기</a>' : '') + chk;
+  }
   function render() {
     var up = hasUpdate();
     var notes = (C.notes || []).map(function (n) {
@@ -2552,8 +2647,7 @@ window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만
       '<div class="grab"></div><div class="head"><h2>' + esc(C.name) + '<span class="vtag' + (up ? ' up' : '') + '">v' + esc(cur()) + '</span></h2>' +
       '<button class="x" type="button" data-x aria-label="닫기">×</button></div>' +
       '<p class="msg">' + statusHTML() + '</p>' +
-      '<div class="row">' + (up && latest.url ? '<a class="btn main" href="' + esc(latest.url) + '" target="_blank" rel="noopener">업데이트 받기</a>' : '') +
-      (C.online ? '<button class="btn" type="button" data-chk' + (checking ? ' disabled' : '') + '>새 버전 확인</button>' : '') + '</div>' +
+      '<div class="row">' + updRow(up) + '</div>' +
       bkHTML() +
       '<p class="lbl">업데이트 내용</p><ul class="notes">' + notes + '</ul>' +
       '<p class="lbl">개인정보</p><p class="hint">' + esc(C.privacy || '') + '</p></div></div>';
@@ -2561,6 +2655,10 @@ window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만
     root.querySelectorAll('[data-x]').forEach(function (b) { b.addEventListener('click', close); });
     var c = root.querySelector('[data-chk]');
     if (c) c.addEventListener('click', function () { check(true); });
+    root.querySelectorAll('[data-upd]').forEach(function (b) { b.addEventListener('click', function () {
+      if (b.getAttribute('data-upd') === 'web') { try { NB.updateInBrowser(); } catch (e) { /* 무시 */ } return; }
+      updGet();
+    }); });
     root.querySelectorAll('[data-bk]').forEach(function (b) { b.addEventListener('click', function () { var k = b.getAttribute('data-bk'); if (k === 'save') bkSave(); else if (k === 'open') bkOpen(); else if (k === 'apply') bkApply(); else if (k === 'unlock') bkUnlock(); else { bk.pending = null; bk.locked = null; bkSet(''); } }); });
   }
   function open() { isOpen = true; host.style.display = 'block'; render(); var sh = root.querySelector('.sheet'); if (sh) sh.focus(); if (C.online && !checking && (!latest || Date.now() - (latest.at || 0) > 600000)) check(false); }
@@ -2590,8 +2688,13 @@ window.APP_INFO.version=APP_VERSION;   // 버전은 APP_VERSION 한 곳에서만
   function native(v) { if (v) { latest = { v: norm(v), url: (latest && latest.url) || ('https://github.com/' + C.repo + '/releases/latest'), at: Date.now() }; try { localStorage.setItem(KEY, JSON.stringify(latest)); } catch (e) { /* 무시 */ } paint(); } }
 
   window.AppInfo = { open: open, check: check, native: native, refresh: paint,
-    backupDone: function (ok, why) { bkDone(!!ok, why); }, backupOpened: function (t) { bkOpened(t); } };
+    backupDone: function (ok, why) { bkDone(!!ok, why); }, backupOpened: function (t) { bkOpened(t); }, backupOpenFail: function (k, b) { bkOpenFail(k, b); },
+    updState: updState,
+    /* 앱을 켤 때 뜨는 '새 버전이 나왔어요' 알림에서 '업데이트'를 누름 */
+    updStart: function () { if (!isOpen) open(); updGet(); } };
   paint();
+  /* 설치 허용을 켜는 사이 앱이 다시 시작됐으면 10분 안에는 저절로 이어 받기 */
+  if (INAPP) { var w = 0; try { w = +localStorage.getItem(UPD_KEY) || 0; } catch (e) { /* 무시 */ } updWait(false); if (w && Date.now() - w < 600e3) setTimeout(function () { window.AppInfo.updStart(); }, 700); }
   if (C.online && (!latest || Date.now() - (latest.at || 0) > 6 * 3600000)) setTimeout(function () { check(false); }, 1500);
   document.addEventListener('visibilitychange', function () { if (!document.hidden && C.online && latest && Date.now() - (latest.at || 0) > 6 * 3600000) check(false); });
 })();
